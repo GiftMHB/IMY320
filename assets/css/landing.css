@@ -3,148 +3,148 @@
 */
 
 .stats-strip {
-   background: var(--up-navy);
-   color: var(--white);
-   padding: 40px 0;
+  background: var(--up-navy);
+  color: var(--white);
+  padding: 40px 0;
 }
 
 .stats-grid {
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   gap: 24px;
-   text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
 }
 
 .stat .stat-num {
-   font-family: var(--font-display);
-   font-size: clamp(28px, 4vw, 40px);
-   font-weight: 700;
-   color: var(--up-gold);
-   line-height: 1;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--up-gold);
+  line-height: 1;
 }
 
 .stat .stat-label {
-   margin-top: 8px;
-   font-size: 13px;
-   color: rgba(255, 255, 255, 0.7);
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .section-head {
-   display: flex;
-   align-items: flex-end;
-   justify-content: space-between;
-   gap: 24px;
-   flex-wrap: wrap;
-   margin-bottom: 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
 }
 
 .section-head h2 {
-   font-size: clamp(24px, 3vw, 32px);
-   margin-bottom: 6px;
+  font-size: clamp(24px, 3vw, 32px);
+  margin-bottom: 6px;
 }
 
 .section-head p {
-   color: var(--ink-soft);
-   margin: 0;
-   max-width: 52ch;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 52ch;
 }
 
 .cat-grid {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .course-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-   gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
 
 .steps-grid {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
 }
 
 .testi-grid {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .cta-band {
-   position: relative;
-   background: var(--up-navy);
-   color: var(--white);
-   overflow: hidden;
-   border-top: 3px solid var(--up-gold);
+  position: relative;
+  background: var(--up-navy);
+  color: var(--white);
+  overflow: hidden;
+  border-top: 3px solid var(--up-gold);
 }
 
 .cta-band::before {
-   content: "";
-   position: absolute;
-   inset: 0;
-   background-image: radial-gradient(circle, rgba(201, 162, 39, 0.20) 1px, transparent 1px);
-   background-size: 20px 20px;
-   opacity: 0.5;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(201, 162, 39, 0.20) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
 }
 
 .cta-band .wrap {
-   position: relative;
-   text-align: center;
-   max-width: 640px;
+  position: relative;
+  text-align: center;
+  max-width: 640px;
 }
 
 .cta-band h2 {
-   color: var(--white);
-   font-size: clamp(26px, 3.4vw, 34px);
+  color: var(--white);
+  font-size: clamp(26px, 3.4vw, 34px);
 }
 
 .cta-band p {
-   color: rgba(255, 255, 255, 0.72);
-   margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 28px;
 }
 
 #category-grid,
 #course-grid {
-   margin-top: 18px;
+  margin-top: 18px;
 }
 
 @media (max-width: 900px) {
-   .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-   }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-   .cat-grid {
-      grid-template-columns: 1fr;
-   }
+  .cat-grid {
+    grid-template-columns: 1fr;
+  }
 
-   .course-grid {
-      grid-template-columns: 1fr;
-   }
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
 
-   .steps-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-   }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 
-   .testi-grid {
-      grid-template-columns: 1fr;
-   }
+  .testi-grid {
+    grid-template-columns: 1fr;
+  }
 
-   .section-head {
-      flex-direction: column;
-      align-items: flex-start;
-   }
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 640px) {
-   .hero-cta .btn {
-      width: 100%;
-   }
+  .hero-cta .btn {
+    width: 100%;
+  }
 
-   .hero-cta {
-      flex-direction: column;
-   }
+  .hero-cta {
+    flex-direction: column;
+  }
 }
