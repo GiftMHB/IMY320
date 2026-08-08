@@ -1,10 +1,7 @@
 /* =========================================================
-   FORGE — design tokens, University of Pretoria theme
-   Palette approximates UP's official navy / gold / red
-   (Wikipedia infobox + up.ac.za live site both confirm
-   "blue, gold, and red" as UP's colours). Swap in the exact
-   Pantone/hex values from UP's Brand Hub before final submission —
-   ask your module coordinator for the current brand PDF link.
+   CODE CAMPUS -> design tokens. 
+   Our website has the University of Pretoria theme which
+   approximates UP's official navy / gold / red color palette.
    ========================================================= */
 :root {
     --up-navy: #041E42;
