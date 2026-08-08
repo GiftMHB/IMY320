@@ -1,0 +1,82 @@
+[
+  {
+    "id": "python-fundamentals",
+    "title": "Python Fundamentals: Build a Budget Tracker",
+    "category": "Python",
+    "level": "Beginner",
+    "durationHours": 6,
+    "price": 0,
+    "description": "Learn core Python by building a working budget tracker, from variables and loops to file handling.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "python-automation",
+    "title": "Python Automation: Build a File Organizer",
+    "category": "Python",
+    "level": "Intermediate",
+    "durationHours": 5,
+    "price": 249,
+    "description": "Automate everyday tasks by scripting a tool that sorts, renames, and organizes files automatically.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "cpp-fundamentals",
+    "title": "C++ Fundamentals: Build a Console Inventory System",
+    "category": "C++",
+    "level": "Beginner",
+    "durationHours": 8,
+    "price": 299,
+    "description": "Learn memory management, pointers, and OOP basics by building a working inventory management tool.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "postgresql-essentials",
+    "title": "PostgreSQL Essentials: Design a Bookstore Database",
+    "category": "PostgreSQL",
+    "level": "Beginner",
+    "durationHours": 5,
+    "price": 199,
+    "description": "Model, query, and optimize a relational database by designing a working bookstore schema from scratch.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "java-fundamentals",
+    "title": "Java Fundamentals: Build a Library Management App",
+    "category": "Java",
+    "level": "Beginner",
+    "durationHours": 7,
+    "price": 249,
+    "description": "Learn classes, interfaces, and collections by building a working library management application.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "typescript-for-js-devs",
+    "title": "TypeScript for JS Developers: Type-Safe Todo App",
+    "category": "TypeScript",
+    "level": "Intermediate",
+    "durationHours": 4,
+    "price": 229,
+    "description": "Add types, interfaces, and generics to a JavaScript app by rebuilding it as a type-safe todo app.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "html-css-foundations",
+    "title": "HTML & CSS Foundations: Build a Portfolio Site",
+    "category": "HTML & CSS",
+    "level": "Beginner",
+    "durationHours": 6,
+    "price": 0,
+    "description": "Learn semantic markup, layout, and responsive design by building and styling your own portfolio site.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "reactjs-fundamentals",
+    "title": "ReactJS Fundamentals: Build a Movie Search App",
+    "category": "ReactJS",
+    "level": "Intermediate",
+    "durationHours": 7,
+    "price": 299,
+    "description": "Learn components, hooks, and state management by building a working movie search app against a live API.",
+    "instructor": "Placeholder Instructor"
+  }
+]

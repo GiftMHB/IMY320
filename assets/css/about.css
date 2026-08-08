@@ -1,0 +1,57 @@
+/* About page-specific styling.
+   Shared structure and design tokens now come from global.css.
+*/
+.about-hero {
+   padding: 72px 0 32px;
+   max-width: 760px;
+}
+
+.about-hero h1 {
+   font-size: clamp(34px, 4.2vw, 46px);
+}
+
+.about-hero p {
+   color: rgba(243, 241, 236, 0.75);
+   font-size: 17px;
+}
+
+.team-grid {
+   display: grid;
+   grid-template-columns: repeat(4, 1fr);
+   gap: 20px;
+}
+
+.team-card {
+   text-align: center;
+}
+
+.avatar {
+   width: 100%;
+   aspect-ratio: 1;
+   background: var(--up-navy);
+   border-radius: var(--radius-lg);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-family: var(--font-display);
+   font-size: 28px;
+   color: var(--up-gold);
+   margin-bottom: 12px;
+}
+
+.team-card h3 {
+   font-size: 15px;
+   margin-bottom: 2px;
+}
+
+.team-card p {
+   font-size: 12px;
+   color: var(--ink-soft);
+   margin: 0;
+}
+
+@media (max-width: 900px) {
+   .team-grid {
+      grid-template-columns: repeat(2, 1fr);
+   }
+}
