@@ -1,10 +1,3 @@
-/* =========================================================
-   auth.js — Group Design A component
-   Simulates a real backend using localStorage so login/register
-   actually persists across reloads without a server (per brief:
-   "JSON files are easy ways of manipulating these interactions").
-   ========================================================= */
-
 const USERS_KEY = "forge_users";
 const SESSION_KEY = "forge_current_user";
 
@@ -40,8 +33,7 @@ function withLoading(button, doWork) {
   const original = button.textContent;
   button.disabled = true;
   button.textContent = "Working…";
-  // Simulate network latency so the flow feels real (per brief: loading states matter)
-  setTimeout(() => {
+    setTimeout(() => {
     doWork();
     button.disabled = false;
     button.textContent = original;
@@ -56,7 +48,6 @@ function initAuthPage() {
     tab.addEventListener("click", () => setTab(tab.dataset.tab));
   });
 
-  // ---- LOGIN ----
   const loginForm = document.getElementById("login-form");
   loginForm.addEventListener("submit", e => {
     e.preventDefault();
@@ -88,7 +79,6 @@ function initAuthPage() {
     });
   });
 
-  // ---- REGISTER ----
   const registerForm = document.getElementById("register-form");
   registerForm.addEventListener("submit", e => {
     e.preventDefault();

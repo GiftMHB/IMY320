@@ -1,13 +1,13 @@
 const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const CATEGORY_ICONS = {
-  "Python":      "devicon-python-plain",
-  "C++":         "devicon-cplusplus-plain",
-  "PostgreSQL":  "devicon-postgresql-plain",
-  "Java":        "devicon-java-plain",
-  "TypeScript":  "devicon-typescript-plain",
-  "HTML & CSS":  "devicon-html5-plain",
-  "ReactJS":     "devicon-react-original",
+  "Python": "devicon-python-plain",
+  "C++": "devicon-cplusplus-plain",
+  "PostgreSQL": "devicon-postgresql-plain",
+  "Java": "devicon-java-plain",
+  "TypeScript": "devicon-typescript-plain",
+  "HTML & CSS": "devicon-html5-plain",
+  "ReactJS": "devicon-react-original",
 };
 const DEFAULT_ICON = "devicon-devicon-plain";
 
@@ -37,7 +37,7 @@ function renderCategories(courses) {
   const counts = {};
   courses.forEach(c => { counts[c.category] = (counts[c.category] || 0) + 1; });
 
- grid.innerHTML = Object.entries(counts).map(([category, count]) => `
+  grid.innerHTML = Object.entries(counts).map(([category, count]) => `
     <a class="cat-tile reveal" href="catalogue.html?category=${encodeURIComponent(category)}">
       <div class="cat-icon"><i class="${CATEGORY_ICONS[category] || DEFAULT_ICON}"></i></div>
       <h3>${category}</h3>
@@ -123,7 +123,6 @@ function setupRotator(courses) {
 
   const wordMap = {
     "Python": "Python.",
-    "C++": "C++.",
     "PostgreSQL": "PostgreSQL.",
     "Java": "Java.",
     "TypeScript": "TypeScript.",
