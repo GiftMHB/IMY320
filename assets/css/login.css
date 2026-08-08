@@ -1,0 +1,15 @@
+/* =========================================================
+   login.css
+   ========================================================= */
+
+.social-row .btn i {
+  font-size: 16px;
+}
+
+.auth-meta {
+  justify-content: flex-end;
+}
+
+.auth-side blockquote {
+  max-width: 34ch;
+}
