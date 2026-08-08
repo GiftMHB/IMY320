@@ -1,21 +1,15 @@
-/* =========================================================
-   app.js — landing page interactivity
-   - Renders category tiles + featured course cards live from
-     data/courses.json (so the page never drifts out of sync
-     with the actual catalogue data).
-   - Animates the stats strip, hero rotator, and scroll reveals.
-   - Everything respects prefers-reduced-motion.
-   ========================================================= */
-
 const REDUCED_MOTION = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-/* ---------- simple line icons per category (no icon library — plain inline SVG) ---------- */
 const CATEGORY_ICONS = {
-  "Web Development": `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="8 6 2 12 8 18"/><polyline points="16 6 22 12 16 18"/></svg>`,
-  "Robotics": `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="9" width="14" height="10" rx="2"/><circle cx="9" cy="14" r="1.2" fill="currentColor" stroke="none"/><circle cx="15" cy="14" r="1.2" fill="currentColor" stroke="none"/><path d="M12 9V5"/><circle cx="12" cy="3.5" r="1.5"/></svg>`,
-  "Game Development": `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="8" width="20" height="9" rx="4"/><path d="M7 10.5v4M5 12.5h4"/><circle cx="16" cy="11" r="1" fill="currentColor" stroke="none"/><circle cx="18.5" cy="13.5" r="1" fill="currentColor" stroke="none"/></svg>`,
+  "Python":      "devicon-python-plain",
+  "C++":         "devicon-cplusplus-plain",
+  "PostgreSQL":  "devicon-postgresql-plain",
+  "Java":        "devicon-java-plain",
+  "TypeScript":  "devicon-typescript-plain",
+  "HTML & CSS":  "devicon-html5-plain",
+  "ReactJS":     "devicon-react-original",
 };
-const DEFAULT_ICON = `<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2"/></svg>`;
+const DEFAULT_ICON = "devicon-devicon-plain";
 
 function formatPrice(price) {
   return price === 0 ? "Free" : `R${price}`;
@@ -43,9 +37,9 @@ function renderCategories(courses) {
   const counts = {};
   courses.forEach(c => { counts[c.category] = (counts[c.category] || 0) + 1; });
 
-  grid.innerHTML = Object.entries(counts).map(([category, count]) => `
+ grid.innerHTML = Object.entries(counts).map(([category, count]) => `
     <a class="cat-tile reveal" href="catalogue.html?category=${encodeURIComponent(category)}">
-      <div class="cat-icon">${CATEGORY_ICONS[category] || DEFAULT_ICON}</div>
+      <div class="cat-icon"><i class="${CATEGORY_ICONS[category] || DEFAULT_ICON}"></i></div>
       <h3>${category}</h3>
       <div class="cat-count">${count} course${count === 1 ? "" : "s"}</div>
     </a>
@@ -123,15 +117,18 @@ function setupStats(courses) {
   observer.observe(strip);
 }
 
-/* ---------- hero rotator: "Start forging apps. / bots. / games." ---------- */
 function setupRotator(courses) {
   const el = document.getElementById("hero-rotator");
   if (!el) return;
 
   const wordMap = {
-    "Web Development": "apps.",
-    "Robotics": "bots.",
-    "Game Development": "games.",
+    "Python": "Python.",
+    "C++": "C++.",
+    "PostgreSQL": "PostgreSQL.",
+    "Java": "Java.",
+    "TypeScript": "TypeScript.",
+    "HTML & CSS": "HTML.",
+    "ReactJS": "React.",
   };
   const words = [...new Set(courses.map(c => wordMap[c.category] || null).filter(Boolean))];
   if (words.length < 2) return;
