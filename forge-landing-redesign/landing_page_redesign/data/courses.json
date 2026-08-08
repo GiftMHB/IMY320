@@ -1,0 +1,42 @@
+[
+  {
+    "id": "js-fundamentals",
+    "title": "JavaScript Fundamentals: Build a Task Tracker",
+    "category": "Web Development",
+    "level": "Beginner",
+    "durationHours": 6,
+    "price": 0,
+    "description": "Learn core JavaScript by building a working task tracker app, from variables to DOM events.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "api-integration",
+    "title": "Working with APIs: Weather Dashboard",
+    "category": "Web Development",
+    "level": "Intermediate",
+    "durationHours": 4,
+    "price": 249,
+    "description": "Fetch, handle errors, and render live data by building a weather dashboard against a public API.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "intro-robotics",
+    "title": "Intro to Robotics: Line-Following Bot",
+    "category": "Robotics",
+    "level": "Beginner",
+    "durationHours": 8,
+    "price": 349,
+    "description": "Assemble and program a simple line-following robot using basic sensors and motor control.",
+    "instructor": "Placeholder Instructor"
+  },
+  {
+    "id": "gamedev-platformer",
+    "title": "Game Dev Basics: 2D Platformer",
+    "category": "Game Development",
+    "level": "Beginner",
+    "durationHours": 10,
+    "price": 299,
+    "description": "Design levels, physics, and player controls to ship a small, playable 2D platformer.",
+    "instructor": "Placeholder Instructor"
+  }
+]
