@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>CodeCampus</title>
+<meta name="description" content="Forge is a course platform for hands-on technical skills: code, robotics, and game dev, taught by building real projects." />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/landing.css" />
+</head>
+<body data-page="landing">
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="site-header"></header>
+
+<main id="main">
+
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <div class="wrap">
+      <div>
+        <div class="hero-eyebrow">// Learn by shipping</div>
+        <h1>Stop watching tutorials.<br>Start building using <span class="rotator" id="hero-rotator" aria-live="off"><span class="rotator-word"></span></span></h1>
+        <p class="lede">CodeCampus teaches real programming languages the only way that sticks: you build a real, working thing in every course - not a slide deck about one.</p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="login.html?tab=register">Start your first build</a>
+          <a class="btn btn-ghost" href="catalogue.html">Browse courses</a>
+        </div>
+      </div>
+
+      <div class="forge-meter" aria-label="Example learning progress">
+        <div class="fm-label"><span>Your skill forge</span><span>Live preview</span></div>
+        <div class="fm-track"><div class="fm-fill"></div></div>
+        <div class="fm-skills">
+          <div class="fm-skill"><span class="fm-dot"></span> Python fundamentals <span class="state">Shipped</span></div>
+          <div class="fm-skill"><span class="fm-dot"></span> Java &amp; C++ basics <span class="state">Shipped</span></div>
+          <div class="fm-skill"><span class="fm-dot"></span> PostgreSQL &amp; databases <span class="state">In progress</span></div>
+          <div class="fm-skill"><span class="fm-dot"></span> React &amp; TypeScript <span class="state">Queued</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PAIN POINTS -->
+  <section class="stats-strip">
+    <div class="wrap">
+      <div class="stats-grid" id="stats-grid">
+        <div class="stat"><div class="stat-num" data-target="0" id="stat-courses">0</div><div class="stat-label">Hands-on courses</div></div>
+        <div class="stat"><div class="stat-num" data-target="0" id="stat-tracks">0</div><div class="stat-label">Skill tracks</div></div>
+        <div class="stat"><div class="stat-num" data-target="0" id="stat-hours">0</div><div class="stat-label">Hours of building</div></div>
+        <div class="stat"><div class="stat-num" data-target="0" id="stat-free">0</div><div class="stat-label">Free to start</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why CodeCampus -->
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="tick-rule">Why CodeCampus</div>
+      <div class="grid-3 reveal-group">
+        <div class="card reveal">
+          <span class="idx">01</span>
+          <h3>Project-first, always</h3>
+          <p>Every course ends with something you shipped - a working application, bot, or game - not just a certificate.</p>
+        </div>
+        <div class="card reveal">
+          <span class="idx">02</span>
+          <h3>Bite-sized, self-paced</h3>
+          <p>Pick up a module on a lunch break or block out a weekend. Your progress is saved automatically.</p>
+        </div>
+        <div class="card reveal">
+          <span class="idx">03</span>
+          <h3>Built for real developers</h3>
+          <p>No fluff, no filler modules. Instructors are working engineers who write the same code they teach.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Category tiles  -->
+  <section>
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-head-text">
+          <h2>Find your language, not just a lesson</h2>
+          <p>Every track ends in something real in your hands. Code you wrote, not notes you took</p>
+        </div>
+      </div>
+      <div class="cat-grid reveal-group" id="category-grid">
+      </div>
+    </div>
+  </section>
+
+ <!-- Courses -->
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="section-head">
+        <div class="section-head-text">
+          <h2>Featured courses</h2>
+          <p>Rand pricing, shown upfront. No surprise checkout. Free courses are a great place to start.</p>
+        </div>
+        <a class="btn btn-ghost" href="catalogue.html">View full catalogue</a>
+      </div>
+      <div class="course-grid reveal-group" id="course-grid">
+      </div>
+    </div>
+  </section>
+
+  <!-- How it works  -->
+  <section>
+    <div class="wrap">
+      <div class="tick-rule">How CodeCampus works</div>
+      <div class="steps-grid reveal-group">
+        <div class="step reveal">
+          <span class="idx">01</span>
+          <h3>Pick a language</h3>
+          <p>Browse by track and skill level, and choose the language you actually want to learn.</p>
+        </div>
+        <div class="step reveal">
+          <span class="idx">02</span>
+          <h3>Learn by building</h3>
+          <p>Short lessons and checkpoints keep you moving. No getting lost thirty videos in.</p>
+        </div>
+        <div class="step reveal">
+          <span class="idx">03</span>
+          <h3>Ship &amp; showcase</h3>
+          <p>Push your finished project live and add it straight to your portfolio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonies -->
+  <section class="section-alt">
+    <div class="wrap">
+      <div class="testi-grid reveal-group">
+        <div class="testi-card reveal">
+          <blockquote>"I'd started a dozen Python courses and finished none of them. This is the first one where I actually built something I use."</blockquote>
+          <div class="testi-who"><div class="testi-avatar">TM</div><div><div class="name">Thabo M.</div><div class="role">Python track</div></div></div>
+        </div>
+        <div class="testi-card reveal">
+          <blockquote>"I'd never touched SQL before this. Three weeks in and I'm writing queries for my own side project."</blockquote>
+          <div class="testi-who"><div class="testi-avatar">LN</div><div><div class="name">Lerato N.</div><div class="role">PostgreSQL track</div></div></div>
+        </div>
+        <div class="testi-card reveal">
+          <blockquote>"Short modules meant I could actually fit React lessons in between lectures and still make real progress."</blockquote>
+          <div class="testi-who"><div class="testi-avatar">JV</div><div><div class="name">Jaco V.</div><div class="role">ReactJS track</div></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<!-- Call to action button -->
+  <section class="cta-band">
+    <div class="wrap">
+      <h2>Ready to build something real?</h2>
+      <p>Join for free and pick your first language today.</p>
+      <a class="btn btn-gold" href="login.html?tab=register">Create your account</a>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer" id="site-footer"></footer>
+
+<script src="assets/js/components.js"></script>
+<script src="assets/js/app.js"></script>
+</body>
+</html>
