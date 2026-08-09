@@ -92,7 +92,7 @@ function renderFooter() {
       </div>
 
       <div class="footer-bottom">
-        <div>© ${new Date().getFullYear()} CodeCampus — an IMY 320 student project.</div>
+        <div>© ${new Date().getFullYear()} CodeCampus - an IMY 320 student project.</div>
       </div>
     </div>
   `;
