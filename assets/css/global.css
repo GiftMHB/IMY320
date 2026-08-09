@@ -237,6 +237,7 @@ textarea:focus-visible {
     position: relative;
     padding: 96px 0 72px;
     overflow: hidden;
+    margin: auto;
 }
 
 .hero::before {
@@ -1142,7 +1143,7 @@ section {
 
 .about-hero {
     padding: 72px 0 32px;
-    max-width: 760px;
+   
 }
 
 .team-grid {
