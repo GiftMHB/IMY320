@@ -1,10 +1,7 @@
 /* =========================================================
-   FORGE — design tokens, University of Pretoria theme
-   Palette approximates UP's official navy / gold / red
-   (Wikipedia infobox + up.ac.za live site both confirm
-   "blue, gold, and red" as UP's colours). Swap in the exact
-   Pantone/hex values from UP's Brand Hub before final submission —
-   ask your module coordinator for the current brand PDF link.
+   CODE CAMPUS -> design tokens. 
+   Our website has the University of Pretoria theme which
+   approximates UP's official navy / gold / red color palette.
    ========================================================= */
 :root {
     --up-navy: #041E42;
@@ -240,6 +237,7 @@ textarea:focus-visible {
     position: relative;
     padding: 96px 0 72px;
     overflow: hidden;
+    margin: auto;
 }
 
 .hero::before {
@@ -347,7 +345,7 @@ textarea:focus-visible {
     }
 }
 
-.forge-meter {
+.codecampus-meter {
     background: var(--up-navy);
     color: var(--white);
     border-radius: var(--radius-lg);
@@ -356,7 +354,7 @@ textarea:focus-visible {
     box-shadow: var(--shadow-lg);
 }
 
-.forge-meter .fm-label {
+.codecampus-meter .fm-label {
     display: flex;
     justify-content: space-between;
     font-size: 12px;
@@ -375,12 +373,12 @@ textarea:focus-visible {
     margin-bottom: 20px;
 }
 
-.fm-fill {
+.codecampus-fill {
     height: 100%;
     width: 6%;
     background: linear-gradient(90deg, var(--up-gold-dark), var(--up-gold));
     border-radius: 999px;
-    animation: forge-fill 3.2s var(--ease) forwards 0.3s;
+    animation: codecampus-fill 3.2s var(--ease) forwards 0.3s;
 }
 
 .fm-skills {
@@ -398,7 +396,7 @@ textarea:focus-visible {
     flex-shrink: 0;
 }
 
-@keyframes forge-fill {
+@keyframes codecampus-fill {
     to {
         width: 92%;
     }
@@ -900,23 +898,71 @@ section {
 
 .site-footer {
     border-top: 3px solid var(--up-navy);
-    background: var(--paper);
-    padding: 40px 0;
+    background: linear-gradient(180deg, #eef4ea 0%, var(--paper) 100%);
+    padding: 54px 0 36px;
     font-size: 13px;
     color: var(--ink-soft);
 }
 
-.site-footer .wrap {
+.footer-wrap {
+    display: grid;
+    grid-template-columns: minmax(220px, 1fr) minmax(420px, 1.2fr);
+    gap: 48px;
+}
+
+.footer-brand {
+    max-width: 310px;
+}
+
+.footer-logo {
+    color: var(--up-navy);
+}
+
+.footer-logo .logo-mark {
+    background: var(--up-gold);
+}
+
+.footer-brand .footer-summary {
+    margin: 18px 0 20px;
+    color: var(--ink-soft);
+    line-height: 1.72;
+    font-size: 13.5px;
+}
+
+.social-links {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
-    gap: 12px;
+    gap: 14px;
+}
+
+.social-links a {
+    color: var(--up-navy);
+    font-weight: 700;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+}
+
+.footer-columns {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(110px, auto));
+    gap: 24px;
+    align-content: start;
+}
+
+.footer-col h3 {
+    margin: 0 0 12px;
+    color: var(--up-navy);
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
 }
 
 .footer-links {
     display: flex;
-    gap: 20px;
+    flex-direction: column;
+    gap: 10px;
     list-style: none;
     padding: 0;
     margin: 0;
@@ -924,6 +970,27 @@ section {
 
 .footer-links a {
     color: var(--ink-soft);
+    transition: color 160ms ease;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    color: var(--up-gold-dark);
+}
+
+.footer-bottom {
+    grid-column: 1 / -1;
+    padding-top: 24px;
+    border-top: 1px solid rgba(43, 63, 63, 0.20);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.footer-bottom .disclosure {
+    max-width: 480px;
 }
 
 .disclosure {
@@ -931,6 +998,22 @@ section {
     font-size: 11px;
     opacity: 0.75;
     margin-top: 4px;
+}
+
+@media (max-width: 720px) {
+    .footer-wrap {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+
+    .footer-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .footer-bottom {
+        flex-direction: column;
+        align-items: flex-start;
+    }
 }
 
 .auth-shell {
@@ -1145,7 +1228,7 @@ section {
 
 .about-hero {
     padding: 72px 0 32px;
-    max-width: 760px;
+
 }
 
 .team-grid {
