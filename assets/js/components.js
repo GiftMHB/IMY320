@@ -9,7 +9,7 @@ function renderHeader() {
   header.innerHTML = `
     <div class="wrap">
       <a class="logo" href="index.html">
-        <span class="logo-mark"></span> Forge
+        <span class="logo-mark"></span> CodeCampus
       </a>
       <ul class="nav-links">
         <li>${link("index.html", "Home", "landing")}</li>
@@ -26,7 +26,7 @@ function renderHeader() {
 function renderAuthState() {
   const slot = document.getElementById("nav-actions");
   if (!slot) return;
-  const user = JSON.parse(localStorage.getItem("forge_current_user") || "null");
+  const user = JSON.parse(localStorage.getItem("codecampus_current_user") || "null");
 
   if (user) {
     slot.innerHTML = `
@@ -34,7 +34,7 @@ function renderAuthState() {
       <button class="btn btn-ghost" id="logout-btn">Log out</button>
     `;
     document.getElementById("logout-btn").addEventListener("click", () => {
-      localStorage.removeItem("forge_current_user");
+      localStorage.removeItem("codecampus_current_user");
       showToast("Signed out", "You've been logged out.", "success");
       setTimeout(() => (window.location.href = "index.html"), 700);
     });
@@ -53,7 +53,7 @@ function renderFooter() {
     <div class="wrap footer-wrap">
       <div class="footer-brand">
         <a class="logo footer-logo" href="index.html">
-          <span class="logo-mark"></span> Forge
+          <span class="logo-mark"></span> CodeCampus
         </a>
         <p class="footer-summary">Build practical software skills with guided, hands-on courses that end in real projects.</p>
         <div class="social-links">
@@ -92,7 +92,7 @@ function renderFooter() {
       </div>
 
       <div class="footer-bottom">
-        <div>© ${new Date().getFullYear()} Forge — an IMY 320 student project.</div>
+        <div>© ${new Date().getFullYear()} CodeCampus — an IMY 320 student project.</div>
       </div>
     </div>
   `;

@@ -1,5 +1,5 @@
-const USERS_KEY = "forge_users";
-const SESSION_KEY = "forge_current_user";
+const USERS_KEY = "codecampus_users";
+const SESSION_KEY = "codecampus_current_user";
 
 function getUsers() {
   return JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
@@ -33,7 +33,7 @@ function withLoading(button, doWork) {
   const original = button.textContent;
   button.disabled = true;
   button.textContent = "Working…";
-    setTimeout(() => {
+  setTimeout(() => {
     doWork();
     button.disabled = false;
     button.textContent = original;
@@ -108,7 +108,7 @@ function initAuthPage() {
       users.push({ name, email, password });
       saveUsers(users);
       localStorage.setItem(SESSION_KEY, JSON.stringify({ name, email }));
-      showToast("Account created", `Welcome to Forge, ${name}.`, "success");
+      showToast("Account created", `Welcome to CodeCampus, ${name}.`, "success");
       setTimeout(() => (window.location.href = "index.html"), 700);
     });
   });
