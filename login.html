@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Log in or sign up: CodeCampus</title>
+  <meta name="description"
+    content="Log in to your CodeCampus account or create a new one to start learning Python, C++, PostgreSQL, Java, TypeScript, HTML, CSS and ReactJS by building real projects." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/login.css" />
+</head>
+
+<body data-page="login">
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <div class="auth-accent auth-accent-top" aria-hidden="true"></div>
+    <section class="auth-shell">
+
+      <!-- Left panel: brand voice, matches the testimonial style used on the landing page -->
+      <aside class="auth-side">
+        <div class="hero-eyebrow">// Learn by shipping</div>
+        <blockquote>&ldquo;I&rsquo;d started a dozen Python courses and finished none of them. This is the first one
+          where I actually built something I use.&rdquo;</blockquote>
+        <cite>&mdash; Thabo M., Python track</cite>
+      </aside>
+
+      <!-- Right panel: the actual login / register form auth.js hooks into -->
+      <div class="auth-form-col">
+        <div class="auth-card">
+          <h1 id="auth-heading">Welcome back</h1>
+
+          <div class="auth-tabs">
+            <button type="button" class="auth-tab" data-tab="login">Log in</button>
+            <button type="button" class="auth-tab" data-tab="register">Sign up</button>
+          </div>
+
+          <div class="social-row">
+            <button type="button" class="btn btn-ghost btn-block"
+              onclick="showToast('Coming soon', 'Social login is not wired up in this prototype.')">
+              <i class="devicon-github-original"></i> Continue with GitHub
+            </button>
+          </div>
+          <div class="auth-divider">or continue with email</div>
+
+          <!-- Login form -->
+          <form id="login-form" novalidate>
+            <div class="field" id="login-email-field">
+              <label for="login-email">Email</label>
+              <input type="email" id="login-email" name="email" autocomplete="email" required />
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="login-password-field">
+              <label for="login-password">Password</label>
+              <input type="password" id="login-password" name="password" autocomplete="current-password" required />
+              <div class="field-error"></div>
+            </div>
+            <div class="auth-meta">
+              <a href="#" onclick="return false;">Forgot password?</a>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Log in</button>
+          </form>
+
+          <!-- Register form -->
+          <form id="register-form" novalidate style="display:none;">
+            <div class="field" id="reg-name-field">
+              <label for="reg-name">Full name</label>
+              <input type="text" id="reg-name" name="name" autocomplete="name" required />
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="reg-email-field">
+              <label for="reg-email">Email</label>
+              <input type="email" id="reg-email" name="email" autocomplete="email" required />
+              <div class="field-error"></div>
+            </div>
+            <div class="field" id="reg-password-field">
+              <label for="reg-password">Password</label>
+              <input type="password" id="reg-password" name="password" autocomplete="new-password" required />
+              <div class="field-hint">Use at least 8 characters.</div>
+              <div class="field-error"></div>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Create account</button>
+          </form>
+
+        </div>
+      </div>
+    </section>
+    <div class="auth-accent auth-accent-bottom" aria-hidden="true"></div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/auth.js"></script>
+</body>
+
+</html>

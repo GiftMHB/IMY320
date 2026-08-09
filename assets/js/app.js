@@ -54,7 +54,7 @@ function renderCourseCards(courses) {
 
   grid.innerHTML = courses.map(c => `
     <article class="course-card reveal">
-      <div class="course-thumb">
+      <div class="course-thumb" style="background-image: url('${c.image}');">
         <span class="thumb-tag">${c.category}</span>
         <span class="thumb-price">${formatPrice(c.price)}</span>
       </div>

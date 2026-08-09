@@ -1,5 +1,5 @@
-const USERS_KEY = "forge_users";
-const SESSION_KEY = "forge_current_user";
+const USERS_KEY = "codecampus_users";
+const SESSION_KEY = "codecampus_current_user";
 
 function getUsers() {
   return JSON.parse(localStorage.getItem(USERS_KEY) || "[]");
@@ -14,6 +14,8 @@ function setTab(tab) {
   document.getElementById("login-form").style.display = tab === "login" ? "block" : "none";
   document.getElementById("register-form").style.display = tab === "register" ? "block" : "none";
   document.getElementById("auth-heading").textContent = tab === "login" ? "Welcome back" : "Start building";
+  const side = document.querySelector(".auth-side");
+  if (side) side.classList.toggle("is-register", tab === "register");
   const url = new URL(window.location);
   url.searchParams.set("tab", tab);
   window.history.replaceState({}, "", url);
@@ -33,7 +35,7 @@ function withLoading(button, doWork) {
   const original = button.textContent;
   button.disabled = true;
   button.textContent = "Working…";
-    setTimeout(() => {
+  setTimeout(() => {
     doWork();
     button.disabled = false;
     button.textContent = original;
@@ -108,7 +110,7 @@ function initAuthPage() {
       users.push({ name, email, password });
       saveUsers(users);
       localStorage.setItem(SESSION_KEY, JSON.stringify({ name, email }));
-      showToast("Account created", `Welcome to Forge, ${name}.`, "success");
+      showToast("Account created", `Welcome to CodeCampus, ${name}.`, "success");
       setTimeout(() => (window.location.href = "index.html"), 700);
     });
   });

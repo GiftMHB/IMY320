@@ -1,150 +1,220 @@
-/* Landing page-specific styling.
-   Shared structure and design tokens now come from global.css.
-*/
-
 .stats-strip {
-   background: var(--up-navy);
-   color: var(--white);
-   padding: 40px 0;
+  background: var(--up-navy);
+  color: var(--white);
+  padding: 40px 0;
 }
 
 .stats-grid {
-   display: grid;
-   grid-template-columns: repeat(4, 1fr);
-   gap: 24px;
-   text-align: center;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  text-align: center;
 }
 
 .stat .stat-num {
-   font-family: var(--font-display);
-   font-size: clamp(28px, 4vw, 40px);
-   font-weight: 700;
-   color: var(--up-gold);
-   line-height: 1;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  color: var(--up-gold);
+  line-height: 1;
 }
 
 .stat .stat-label {
-   margin-top: 8px;
-   font-size: 13px;
-   color: rgba(255, 255, 255, 0.7);
+  margin-top: 8px;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.7);
 }
 
 .section-head {
-   display: flex;
-   align-items: flex-end;
-   justify-content: space-between;
-   gap: 24px;
-   flex-wrap: wrap;
-   margin-bottom: 32px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-bottom: 32px;
 }
 
 .section-head h2 {
-   font-size: clamp(24px, 3vw, 32px);
-   margin-bottom: 6px;
+  font-size: clamp(24px, 3vw, 32px);
+  margin-bottom: 6px;
 }
 
 .section-head p {
-   color: var(--ink-soft);
-   margin: 0;
-   max-width: 52ch;
+  color: var(--ink-soft);
+  margin: 0;
+  max-width: 52ch;
+}
+
+.hero .wrap {
+  grid-template-columns: 1fr 1.05fr;   /* give the image column equal or slightly more room than text, instead of 1.1fr / 0.9fr favoring text */
+}
+
+.hero-visual {
+  position: relative;
+  isolation: isolate;
+  padding: 20px;   /* reduced from 30px so more of the space goes to the image itself */
+}
+
+.hero-visual::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 51, 160, 0.5) 0%, rgba(0, 51, 160, 0.2) 40%, transparent 70%);
+  filter: blur(30px);
+  z-index: 0;
+}
+
+.hero-image {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  aspect-ratio: 3 / 2;   /* was 4/3 — matches this photo's actual landscape proportions better */
+  border-radius: var(--radius-lg);
+  box-shadow: 0 30px 60px -12px rgba(0, 51, 160, 0.4), 0 0 0 1px rgba(0, 51, 160, 0.08);
 }
 
 .cat-grid {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .course-grid {
-   display: grid;
-   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-   gap: 24px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 24px;
 }
 
 .steps-grid {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 0;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
 }
 
 .testi-grid {
-   display: grid;
-   grid-template-columns: repeat(3, 1fr);
-   gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .cta-band {
-   position: relative;
-   background: var(--up-navy);
-   color: var(--white);
-   overflow: hidden;
-   border-top: 3px solid var(--up-gold);
+  position: relative;
+  background: var(--up-navy);
+  color: var(--white);
+  overflow: hidden;
+  border-top: 3px solid var(--up-gold);
 }
 
 .cta-band::before {
-   content: "";
-   position: absolute;
-   inset: 0;
-   background-image: radial-gradient(circle, rgba(201, 162, 39, 0.20) 1px, transparent 1px);
-   background-size: 20px 20px;
-   opacity: 0.5;
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(201, 162, 39, 0.20) 1px, transparent 1px);
+  background-size: 20px 20px;
+  opacity: 0.5;
 }
 
 .cta-band .wrap {
-   position: relative;
-   text-align: center;
-   max-width: 640px;
+  position: relative;
+  text-align: center;
+  max-width: 640px;
 }
 
 .cta-band h2 {
-   color: var(--white);
-   font-size: clamp(26px, 3.4vw, 34px);
+  color: var(--white);
+  font-size: clamp(26px, 3.4vw, 34px);
 }
 
 .cta-band p {
-   color: rgba(255, 255, 255, 0.72);
-   margin-bottom: 28px;
+  color: rgba(255, 255, 255, 0.72);
+  margin-bottom: 28px;
 }
 
 #category-grid,
 #course-grid {
-   margin-top: 18px;
+  margin-top: 18px;
 }
 
 @media (max-width: 900px) {
-   .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-   }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
-   .cat-grid {
-      grid-template-columns: 1fr;
-   }
+  .cat-grid {
+    grid-template-columns: 1fr;
+  }
 
-   .course-grid {
-      grid-template-columns: 1fr;
-   }
+  .course-grid {
+    grid-template-columns: 1fr;
+  }
 
-   .steps-grid {
-      grid-template-columns: 1fr;
-      gap: 32px;
-   }
+  .steps-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
 
-   .testi-grid {
-      grid-template-columns: 1fr;
-   }
+  .testi-grid {
+    grid-template-columns: 1fr;
+  }
 
-   .section-head {
-      flex-direction: column;
-      align-items: flex-start;
-   }
+  .section-head {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 @media (max-width: 640px) {
-   .hero-cta .btn {
-      width: 100%;
-   }
+  .hero-cta .btn {
+    width: 100%;
+  }
 
-   .hero-cta {
-      flex-direction: column;
-   }
+  .hero-cta {
+    flex-direction: column;
+  }
+}
+
+/* ---- put this OUTSIDE any @media block, so it applies at every screen size ---- */
+.course-thumb {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: var(--up-navy);
+  overflow: hidden;
+}
+
+.course-thumb::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(4,30,66,0.15) 0%, rgba(4,30,66,0.55) 100%);
+}
+
+.course-thumb .thumb-tag {
+  position: absolute;
+  top: 14px; left: 14px;
+  background: rgba(255,255,255,0.16);
+  color: var(--white);
+  font-family: var(--font-body);
+  font-size: 12px;
+  font-weight: 500;
+  padding: 5px 11px;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+  z-index: 1;
+}
+
+.course-thumb .thumb-price {
+  position: absolute;
+  bottom: 14px; right: 14px;
+  background: var(--up-gold);
+  color: var(--up-navy);
+  font-weight: 700;
+  font-size: 13px;
+  padding: 5px 12px;
+  border-radius: 999px;
+  z-index: 1;
 }
