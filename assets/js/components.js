@@ -50,16 +50,50 @@ function renderFooter() {
   const footer = document.getElementById("site-footer");
   if (!footer) return;
   footer.innerHTML = `
-    <div class="wrap">
-      <div>
-        <div>© ${new Date().getFullYear()} Forge — an IMY 320 student project.</div>
-        <div class="disclosure">Built with vanilla HTML/CSS/JS. Fonts: Space Grotesk, Inter, JetBrains Mono (Google Fonts). No other third-party frameworks used.</div>
+    <div class="wrap footer-wrap">
+      <div class="footer-brand">
+        <a class="logo footer-logo" href="index.html">
+          <span class="logo-mark"></span> Forge
+        </a>
+        <p class="footer-summary">Build practical software skills with guided, hands-on courses that end in real projects.</p>
+        <div class="social-links">
+          <a href="#" aria-label="LinkedIn">LinkedIn</a>
+          <a href="#" aria-label="GitHub">GitHub</a>
+          <a href="#" aria-label="Newsletter">Newsletter</a>
+        </div>
       </div>
-      <ul class="footer-links">
-        <li><a href="about.html">About</a></li>
-        <li><a href="catalogue.html">Courses</a></li>
-        <li><a href="#" onclick="return false;">Privacy</a></li>
-      </ul>
+
+      <div class="footer-columns">
+        <div class="footer-col">
+          <h3>Platform</h3>
+          <ul class="footer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="catalogue.html">Courses</a></li>
+            <li><a href="about.html">About</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Tracks</h3>
+          <ul class="footer-links">
+            <li><a href="catalogue.html">Python</a></li>
+            <li><a href="catalogue.html">Java & C++</a></li>
+            <li><a href="catalogue.html">React & TypeScript</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h3>Resources</h3>
+          <ul class="footer-links">
+            <li><a href="#" onclick="return false;">Learning roadmap</a></li>
+            <li><a href="#" onclick="return false;">Privacy</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>© ${new Date().getFullYear()} Forge — an IMY 320 student project.</div>
+      </div>
     </div>
   `;
 }
