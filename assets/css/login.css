@@ -40,7 +40,7 @@
       rgba(4, 30, 66, 0.88) 25%,
       rgba(4, 30, 66, 0.45) 65%,
       rgba(4, 30, 66, 0.12) 100%),
-    url("assets/images/auth-login.jpg");
+    url("../images/auth-login.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -54,7 +54,7 @@
       rgba(4, 30, 66, 0.88) 25%,
       rgba(4, 30, 66, 0.45) 65%,
       rgba(4, 30, 66, 0.12) 100%),
-    url("assets/images/auth-register.jpg");
+    url("../images/auth-register.jpg");
 }
 
 .social-row .btn i {
