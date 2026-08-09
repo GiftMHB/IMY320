@@ -1,6 +1,61 @@
-/* =========================================================
+/*
    login.css
-   ========================================================= */
+ */
+
+.auth-accent {
+  position: relative;
+  height: 56px;
+  background: var(--up-gold);
+  overflow: hidden;
+}
+
+.auth-accent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(4, 30, 66, 0.18) 1px, transparent 1px);
+  background-size: 18px 18px;
+}
+
+.auth-accent-top {
+  border-bottom: 1px solid var(--up-gold-dark);
+}
+
+.auth-accent-bottom {
+  border-top: 1px solid var(--up-gold-dark);
+}
+
+.auth-shell {
+  min-height: calc(100vh - 140px - 112px);
+}
+
+.auth-form-col {
+  background: var(--white);
+}
+
+.auth-side {
+  background-image:
+    linear-gradient(to right,
+      var(--up-navy) 0%,
+      rgba(4, 30, 66, 0.88) 25%,
+      rgba(4, 30, 66, 0.45) 65%,
+      rgba(4, 30, 66, 0.12) 100%),
+    url("assets/images/auth-login.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-image 0.3s ease;
+}
+
+.auth-side.is-register {
+  background-image:
+    linear-gradient(to right,
+      var(--up-navy) 0%,
+      rgba(4, 30, 66, 0.88) 25%,
+      rgba(4, 30, 66, 0.45) 65%,
+      rgba(4, 30, 66, 0.12) 100%),
+    url("assets/images/auth-register.jpg");
+}
 
 .social-row .btn i {
   font-size: 16px;
