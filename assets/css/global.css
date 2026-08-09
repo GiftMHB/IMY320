@@ -1,3 +1,8 @@
+/* =========================================================
+   CODE CAMPUS -> design tokens. 
+   Our website has the University of Pretoria theme which
+   approximates UP's official navy / gold / red color palette.
+   ========================================================= */
 :root {
     --up-navy: #041E42;
     --up-navy-2: #0A2A55;

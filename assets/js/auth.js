@@ -14,6 +14,8 @@ function setTab(tab) {
   document.getElementById("login-form").style.display = tab === "login" ? "block" : "none";
   document.getElementById("register-form").style.display = tab === "register" ? "block" : "none";
   document.getElementById("auth-heading").textContent = tab === "login" ? "Welcome back" : "Start building";
+  const side = document.querySelector(".auth-side");
+  if (side) side.classList.toggle("is-register", tab === "register");
   const url = new URL(window.location);
   url.searchParams.set("tab", tab);
   window.history.replaceState({}, "", url);
