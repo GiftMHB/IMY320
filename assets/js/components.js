@@ -1,13 +1,3 @@
-/* =========================================================
-   components.js
-   Injects the shared header + footer on every page so that
-   Group Design B (catalogue links) and C (interactivity/peak-end
-   polish) only ever need to be edited in ONE place.
-   Each page just needs: <div id="site-header"></div> and
-   <div id="site-footer"></div>, plus data-page="landing|login|about|catalogue"
-   on <body> to highlight the active nav link.
-   ========================================================= */
-
 function renderHeader() {
   const page = document.body.dataset.page || "";
   const link = (href, label, key) =>
