@@ -1,11 +1,3 @@
-/* =========================================================
-   FORGE — design tokens, University of Pretoria theme
-   Palette approximates UP's official navy / gold / red
-   (Wikipedia infobox + up.ac.za live site both confirm
-   "blue, gold, and red" as UP's colours). Swap in the exact
-   Pantone/hex values from UP's Brand Hub before final submission —
-   ask your module coordinator for the current brand PDF link.
-   ========================================================= */
 :root {
     --up-navy: #041E42;
     --up-navy-2: #0A2A55;
@@ -240,6 +232,7 @@ textarea:focus-visible {
     position: relative;
     padding: 96px 0 72px;
     overflow: hidden;
+    margin: auto;
 }
 
 .hero::before {
@@ -1145,7 +1138,7 @@ section {
 
 .about-hero {
     padding: 72px 0 32px;
-    max-width: 760px;
+   
 }
 
 .team-grid {
