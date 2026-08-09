@@ -19,7 +19,7 @@ function renderHeader() {
   header.innerHTML = `
     <div class="wrap">
       <a class="logo" href="index.html">
-        <span class="logo-mark"></span> Forge
+        <span class="logo-mark"></span> CodeCampus
       </a>
       <ul class="nav-links">
         <li>${link("index.html", "Home", "landing")}</li>
