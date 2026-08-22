@@ -1,12 +1,16 @@
-/* Course detail page.
-   Reuses global.css tokens + shared components (.course-grid/.course-card,
-   .testi-grid/.testi-card, .btn, .wrap). Only genuinely new patterns for
-   this page live here: hero grid, sidebar card, project-focus box,
-   check-grid, curriculum accordion, requirements list, instructor card.
-*/
 
-.wrap.narrow {
-   max-width: 760px;
+.content-block {
+   padding: 28px 0;
+}
+
+.content-block h2 {
+   font-size: 20px;
+   margin-bottom: 14px;
+}
+
+.content-block p#about-text {
+   margin-bottom: 20px;
+   max-width: 80ch;
 }
 
 .breadcrumb {
@@ -29,7 +33,7 @@
 }
 
 .detail-hero {
-   padding: 32px 0 56px;
+   padding: 24px 0 32px;
 }
 
 .detail-hero-grid {
@@ -96,7 +100,6 @@
    letter-spacing: 1px;
 }
 
-/* Sidebar */
 .detail-sidebar {
    position: sticky;
    top: 96px;
@@ -166,7 +169,6 @@
    color: var(--ink-soft);
 }
 
-/* Project focus */
 .project-focus {
    display: flex;
    gap: 16px;
@@ -201,14 +203,22 @@
    margin: 0;
 }
 
-/* What you'll learn */
 .check-grid {
    list-style: none;
    margin: 0;
    padding: 0;
    display: grid;
-   grid-template-columns: 1fr 1fr;
-   gap: 12px 24px;
+   grid-template-columns: repeat(2, minmax(0, 560px));
+   gap: 12px 40px;
+}
+
+#reviews-grid {
+   grid-template-columns: repeat(4, 1fr);
+   gap: 16px;
+}
+
+#reviews-grid .testi-card blockquote {
+   font-size: 13.5px;
 }
 
 .check-grid li {
@@ -348,7 +358,7 @@
    font-size: 14px;
    color: var(--ink-soft);
    margin: 0;
-   max-width: 60ch;
+   max-width: 90ch;
 }
 
 @media (max-width: 900px) {
@@ -366,5 +376,15 @@
 
    .instructor-card {
       flex-direction: column;
+   }
+
+   #reviews-grid {
+      grid-template-columns: 1fr 1fr;
+   }
+}
+
+@media (max-width: 600px) {
+   #reviews-grid {
+      grid-template-columns: 1fr;
    }
 }
