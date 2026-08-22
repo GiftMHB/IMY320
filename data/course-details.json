@@ -1,0 +1,370 @@
+{
+  "python-fundamentals": {
+    "rating": 4.8,
+    "reviewsCount": 214,
+    "studentsCount": 3120,
+    "longDescription": "Start from zero and build real, working software. This course walks through Python's core syntax — variables, loops, functions, and file handling — entirely through the lens of one project: a budget tracker you'll actually be able to use afterwards.",
+    "projectFocus": {
+      "title": "What you'll build",
+      "description": "A command-line budget tracker that logs income and expenses to a file and reports monthly totals."
+    },
+    "learnPoints": [
+      "Write and structure Python scripts with functions",
+      "Work with lists, dictionaries, and loops confidently",
+      "Read from and write to files to persist data",
+      "Handle user input and basic errors gracefully"
+    ],
+    "curriculum": [
+      { "title": "Module 1: Python Basics", "duration": "1h 10m", "lessons": [
+        { "title": "Welcome to the course", "duration": "5m" },
+        { "title": "Variables, types & operators", "duration": "35m" },
+        { "title": "Setting up your environment", "duration": "30m" }
+      ]},
+      { "title": "Module 2: Control Flow & Functions", "duration": "1h 45m", "lessons": [
+        { "title": "Loops and conditionals", "duration": "50m" },
+        { "title": "Writing reusable functions", "duration": "55m" }
+      ]},
+      { "title": "Module 3: Final Project — The Budget Tracker", "duration": "2h 5m", "lessons": [
+        { "title": "Reading and writing files", "duration": "45m" },
+        { "title": "Building the tracker", "duration": "1h 20m" }
+      ]}
+    ],
+    "requirements": [
+      "Basic computer literacy and ability to install software.",
+      "No prior coding experience required — we start from absolute basics.",
+      "A Mac, PC, or Linux machine with an internet connection."
+    ],
+    "instructor": {
+      "bio": "Nomvula is a Senior Data Scientist with over 8 years of experience building predictive models and data infrastructure for top financial institutions. She's passionate about breaking down complex concepts into practical, hands-on lessons.",
+      "rating": 4.8,
+      "studentsCount": 4500,
+      "coursesCount": 5
+    },
+    "reviews": [
+      { "name": "James D.", "initials": "JD", "rating": 5, "quote": "Incredibly structured. I went from knowing zero Python to building my own scripts in just a few weeks." },
+      { "name": "Sarah T.", "initials": "ST", "rating": 5, "quote": "The pacing is rigorous but completely accessible for beginners. Highly recommend." }
+    ]
+  },
+
+  "python-automation": {
+    "rating": 4.6,
+    "reviewsCount": 98,
+    "studentsCount": 1540,
+    "longDescription": "Stop doing repetitive file cleanup by hand. This course teaches practical automation with Python's standard library by having you build a tool that sorts, renames, and organizes files on demand.",
+    "projectFocus": {
+      "title": "What you'll build",
+      "description": "A file organizer script that automatically sorts a messy downloads folder by file type and date."
+    },
+    "learnPoints": [
+      "Automate file and folder operations with Python",
+      "Work confidently with paths, globs, and the OS module",
+      "Schedule and trigger scripts to run automatically",
+      "Package a script so it's easy to reuse"
+    ],
+    "curriculum": [
+      { "title": "Module 1: Automation Foundations", "duration": "1h", "lessons": [
+        { "title": "Why automate? Real-world use cases", "duration": "15m" },
+        { "title": "Working with the filesystem", "duration": "45m" }
+      ]},
+      { "title": "Module 2: Building the Organizer", "duration": "2h 30m", "lessons": [
+        { "title": "Sorting files by type", "duration": "1h" },
+        { "title": "Renaming and date-based folders", "duration": "1h 30m" }
+      ]},
+      { "title": "Module 3: Scheduling & Packaging", "duration": "1h 30m", "lessons": [
+        { "title": "Running scripts on a schedule", "duration": "45m" },
+        { "title": "Packaging for reuse", "duration": "45m" }
+      ]}
+    ],
+    "requirements": [
+      "Comfortable with basic Python syntax (variables, loops, functions).",
+      "A Mac, PC, or Linux machine with Python installed.",
+      "A folder of test files to practice organizing (we provide samples too)."
+    ],
+    "instructor": {
+      "bio": "Reece is a backend engineer who has spent years building internal tooling to remove repetitive work from engineering teams. He teaches automation the way he wishes it was taught to him: through real, messy problems.",
+      "rating": 4.7,
+      "studentsCount": 2100,
+      "coursesCount": 3
+    },
+    "reviews": [
+      { "name": "Karabo M.", "initials": "KM", "rating": 5, "quote": "Immediately useful. I automated my own downloads folder the same day." },
+      { "name": "Liam P.", "initials": "LP", "rating": 4, "quote": "Great practical content, would love a follow-up on more advanced scheduling." }
+    ]
+  },
+
+  "cpp-fundamentals": {
+    "rating": 4.7,
+    "reviewsCount": 156,
+    "studentsCount": 2210,
+    "longDescription": "Understand what's really happening under the hood. This course covers memory management, pointers, and object-oriented basics in C++ by having you design and build a working inventory management system.",
+    "projectFocus": {
+      "title": "What you'll build",
+      "description": "A console-based inventory system with classes for products, stock levels, and simple reporting."
+    },
+    "learnPoints": [
+      "Understand pointers, references, and memory management",
+      "Design classes and objects with proper encapsulation",
+      "Work with the Standard Template Library (STL)",
+      "Structure a multi-file C++ project"
+    ],
+    "curriculum": [
+      { "title": "Module 1: C++ Basics", "duration": "1h 20m", "lessons": [
+        { "title": "Setting up your compiler", "duration": "20m" },
+        { "title": "Variables, types & control flow", "duration": "1h" }
+      ]},
+      { "title": "Module 2: Pointers & Memory", "duration": "2h", "lessons": [
+        { "title": "Pointers and references", "duration": "1h" },
+        { "title": "Dynamic memory allocation", "duration": "1h" }
+      ]},
+      { "title": "Module 3: OOP & The Inventory System", "duration": "2h 40m", "lessons": [
+        { "title": "Classes and objects", "duration": "1h" },
+        { "title": "Building the inventory system", "duration": "1h 40m" }
+      ]}
+    ],
+    "requirements": [
+      "Basic programming familiarity in any language is helpful but not required.",
+      "A Mac, PC, or Linux machine able to run a C++ compiler.",
+      "Willingness to work with the command line."
+    ],
+    "instructor": {
+      "bio": "Amara is a systems engineer with a background in performance-critical software. She has spent her career close to the metal and enjoys demystifying memory management for newer developers.",
+      "rating": 4.7,
+      "studentsCount": 1800,
+      "coursesCount": 2
+    },
+    "reviews": [
+      { "name": "Tumi S.", "initials": "TS", "rating": 5, "quote": "Finally understood pointers properly after years of confusion. Well explained." },
+      { "name": "Michael K.", "initials": "MK", "rating": 4, "quote": "Solid foundational course, the inventory project ties it all together nicely." }
+    ]
+  },
+
+  "postgresql-essentials": {
+    "rating": 4.7,
+    "reviewsCount": 121,
+    "studentsCount": 1890,
+    "longDescription": "Learn relational database design the practical way: by modeling, querying, and optimizing a real bookstore schema from scratch, covering everything from table design to indexing.",
+    "projectFocus": {
+      "title": "What you'll build",
+      "description": "A working bookstore database with authors, books, orders, and optimized queries for common lookups."
+    },
+    "learnPoints": [
+      "Design normalized relational schemas",
+      "Write joins, subqueries, and aggregate queries",
+      "Use indexes to speed up slow queries",
+      "Model real-world relationships between tables"
+    ],
+    "curriculum": [
+      { "title": "Module 1: Relational Design", "duration": "1h", "lessons": [
+        { "title": "Tables, keys & relationships", "duration": "35m" },
+        { "title": "Designing the bookstore schema", "duration": "25m" }
+      ]},
+      { "title": "Module 2: Querying", "duration": "1h 45m", "lessons": [
+        { "title": "Joins and subqueries", "duration": "1h" },
+        { "title": "Aggregates and grouping", "duration": "45m" }
+      ]},
+      { "title": "Module 3: Performance", "duration": "1h 15m", "lessons": [
+        { "title": "Indexing strategies", "duration": "45m" },
+        { "title": "Query optimization", "duration": "30m" }
+      ]}
+    ],
+    "requirements": [
+      "No prior database experience required.",
+      "PostgreSQL installed locally (setup guide included).",
+      "Basic comfort with the command line is helpful."
+    ],
+    "instructor": {
+      "bio": "Dylan is a backend engineer who has designed data models for products handling millions of records. He believes good schema design prevents most of the bugs teams fight later.",
+      "rating": 4.6,
+      "studentsCount": 1500,
+      "coursesCount": 2
+    },
+    "reviews": [
+      { "name": "Naledi V.", "initials": "NV", "rating": 5, "quote": "Clear, practical, and the bookstore project made everything click." },
+      { "name": "Andre F.", "initials": "AF", "rating": 4, "quote": "Great intro to indexing — wish it went a little deeper on optimization." }
+    ]
+  },
+
+  "java-fundamentals": {
+    "rating": 4.6,
+    "reviewsCount": 143,
+    "studentsCount": 2430,
+    "longDescription": "Build a real application while learning Java's core concepts: classes, interfaces, and collections, all in service of a working library management system you design from the ground up.",
+    "projectFocus": {
+      "title": "What you'll build",
+      "description": "A library management app that tracks books, members, and loans using core Java collections."
+    },
+    "learnPoints": [
+      "Design classes, interfaces, and inheritance hierarchies",
+      "Use Java's collections framework effectively",
+      "Handle exceptions and validate input safely",
+      "Structure a small multi-class application"
+    ],
+    "curriculum": [
+      { "title": "Module 1: Java Basics", "duration": "1h 15m", "lessons": [
+        { "title": "Setting up your environment", "duration": "20m" },
+        { "title": "Classes and objects", "duration": "55m" }
+      ]},
+      { "title": "Module 2: Interfaces & Collections", "duration": "1h 50m", "lessons": [
+        { "title": "Interfaces and polymorphism", "duration": "1h" },
+        { "title": "Lists, maps, and sets", "duration": "50m" }
+      ]},
+      { "title": "Module 3: The Library System", "duration": "2h", "lessons": [
+        { "title": "Modeling books, members & loans", "duration": "1h" },
+        { "title": "Putting it all together", "duration": "1h" }
+      ]}
+    ],
+    "requirements": [
+      "No prior Java experience required.",
+      "A Mac, PC, or Linux machine with the JDK installed (setup guide included).",
+      "Basic problem-solving mindset — we'll teach the syntax."
+    ],
+    "instructor": {
+      "bio": "Priya is a software engineer who has led backend teams building enterprise Java systems. She focuses on teaching Java the way it's actually used in production, not just in theory.",
+      "rating": 4.6,
+      "studentsCount": 2600,
+      "coursesCount": 4
+    },
+    "reviews": [
+      { "name": "Bongani Z.", "initials": "BZ", "rating": 5, "quote": "Really well paced. The library project pulled together everything from earlier modules." },
+      { "name": "Emma R.", "initials": "ER", "rating": 4, "quote": "Good fundamentals course, clear explanations throughout." }
+    ]
+  },
+
+  "typescript-for-js-devs": {
+    "rating": 4.8,
+    "reviewsCount": 87,
+    "studentsCount": 1320,
+    "longDescription": "Already know JavaScript? This course adds TypeScript's type system on top of skills you already have, by rebuilding a familiar todo app as a fully type-safe application.",
+    "projectFocus": {
+      "title": "What you'll build",
+      "description": "A type-safe todo app rebuilt from JavaScript, using interfaces and generics throughout."
+    },
+    "learnPoints": [
+      "Add static types to existing JavaScript code",
+      "Design interfaces and type aliases",
+      "Use generics to write reusable, type-safe functions",
+      "Catch bugs at compile time instead of runtime"
+    ],
+    "curriculum": [
+      { "title": "Module 1: TypeScript Basics", "duration": "50m", "lessons": [
+        { "title": "Why TypeScript?", "duration": "10m" },
+        { "title": "Basic types and type inference", "duration": "40m" }
+      ]},
+      { "title": "Module 2: Interfaces & Generics", "duration": "1h 20m", "lessons": [
+        { "title": "Interfaces and type aliases", "duration": "40m" },
+        { "title": "Generics in practice", "duration": "40m" }
+      ]},
+      { "title": "Module 3: Rebuilding the Todo App", "duration": "1h 50m", "lessons": [
+        { "title": "Typing app state and props", "duration": "1h" },
+        { "title": "Finishing touches & strict mode", "duration": "50m" }
+      ]}
+    ],
+    "requirements": [
+      "Solid working knowledge of JavaScript (ES6+).",
+      "Node.js installed locally.",
+      "Familiarity with basic frontend concepts is helpful."
+    ],
+    "instructor": {
+      "bio": "Kagiso is a frontend engineer who migrated several production JavaScript codebases to TypeScript. He teaches the migration mindset, not just the syntax.",
+      "rating": 4.8,
+      "studentsCount": 1750,
+      "coursesCount": 3
+    },
+    "reviews": [
+      { "name": "Zanele P.", "initials": "ZP", "rating": 5, "quote": "Exactly what I needed as a JS dev — no fluff, straight into practical typing." },
+      { "name": "David N.", "initials": "DN", "rating": 5, "quote": "The generics section finally made sense after this course." }
+    ]
+  },
+
+  "html-css-foundations": {
+    "rating": 4.9,
+    "reviewsCount": 268,
+    "studentsCount": 4870,
+    "longDescription": "Learn the building blocks of the web from scratch: semantic HTML, layout with CSS, and responsive design, all while building and styling your own portfolio site.",
+    "projectFocus": {
+      "title": "What you'll build",
+      "description": "A fully responsive personal portfolio site, built and styled from a blank page."
+    },
+    "learnPoints": [
+      "Write clean, semantic HTML markup",
+      "Layout pages confidently with Flexbox and Grid",
+      "Build responsive designs that work on any screen",
+      "Style a real site from scratch, without a framework"
+    ],
+    "curriculum": [
+      { "title": "Module 1: HTML Foundations", "duration": "1h", "lessons": [
+        { "title": "Semantic HTML structure", "duration": "35m" },
+        { "title": "Forms and accessibility basics", "duration": "25m" }
+      ]},
+      { "title": "Module 2: CSS Layout", "duration": "1h 40m", "lessons": [
+        { "title": "Flexbox in practice", "duration": "50m" },
+        { "title": "CSS Grid in practice", "duration": "50m" }
+      ]},
+      { "title": "Module 3: Building the Portfolio", "duration": "2h 20m", "lessons": [
+        { "title": "Structuring the site", "duration": "1h" },
+        { "title": "Making it responsive", "duration": "1h 20m" }
+      ]}
+    ],
+    "requirements": [
+      "No prior coding experience required — we start from absolute basics.",
+      "A Mac, PC, or Linux machine with a text editor and browser.",
+      "No design experience needed."
+    ],
+    "instructor": {
+      "bio": "Sipho is a frontend developer and former bootcamp instructor who specializes in teaching complete beginners. He believes anyone can learn to build for the web with the right first course.",
+      "rating": 4.9,
+      "studentsCount": 5200,
+      "coursesCount": 6
+    },
+    "reviews": [
+      { "name": "Palesa K.", "initials": "PK", "rating": 5, "quote": "The absolute best starting point. Went from nothing to a real portfolio site." },
+      { "name": "Ryan B.", "initials": "RB", "rating": 5, "quote": "Clear, patient, and genuinely fun to follow along with." }
+    ]
+  },
+
+  "reactjs-fundamentals": {
+    "rating": 4.7,
+    "reviewsCount": 176,
+    "studentsCount": 2980,
+    "longDescription": "Learn modern React by building something real: a movie search app that talks to a live API, covering components, hooks, and state management along the way.",
+    "projectFocus": {
+      "title": "What you'll build",
+      "description": "A movie search app that queries a live API and manages loading, error, and result states."
+    },
+    "learnPoints": [
+      "Build and compose functional components",
+      "Manage state and side effects with hooks",
+      "Fetch and display data from a live API",
+      "Handle loading and error states gracefully"
+    ],
+    "curriculum": [
+      { "title": "Module 1: Component Basics", "duration": "1h 10m", "lessons": [
+        { "title": "JSX and components", "duration": "40m" },
+        { "title": "Props and composition", "duration": "30m" }
+      ]},
+      { "title": "Module 2: Hooks & State", "duration": "1h 50m", "lessons": [
+        { "title": "useState and useEffect", "duration": "1h" },
+        { "title": "Custom hooks", "duration": "50m" }
+      ]},
+      { "title": "Module 3: The Movie Search App", "duration": "2h 10m", "lessons": [
+        { "title": "Fetching from a live API", "duration": "1h 10m" },
+        { "title": "Loading, errors & polish", "duration": "1h" }
+      ]}
+    ],
+    "requirements": [
+      "Solid working knowledge of JavaScript (ES6+).",
+      "Node.js installed locally.",
+      "No prior React experience required."
+    ],
+    "instructor": {
+      "bio": "Chloe is a frontend engineer who has built and maintained production React applications for several years. She focuses on teaching patterns that hold up in real codebases, not just tutorials.",
+      "rating": 4.7,
+      "studentsCount": 2300,
+      "coursesCount": 3
+    },
+    "reviews": [
+      { "name": "Ayanda M.", "initials": "AM", "rating": 5, "quote": "Building against a real API from lesson one made everything click faster." },
+      { "name": "Sarah T.", "initials": "ST2", "rating": 4, "quote": "Great pacing on hooks, would've liked a bit more on testing." }
+    ]
+  }
+}

@@ -1,0 +1,370 @@
+/* Course detail page.
+   Reuses global.css tokens + shared components (.course-grid/.course-card,
+   .testi-grid/.testi-card, .btn, .wrap). Only genuinely new patterns for
+   this page live here: hero grid, sidebar card, project-focus box,
+   check-grid, curriculum accordion, requirements list, instructor card.
+*/
+
+.wrap.narrow {
+   max-width: 760px;
+}
+
+.breadcrumb {
+   font-size: 13px;
+   color: var(--ink-soft);
+   margin-bottom: 20px;
+}
+
+.breadcrumb a {
+   color: var(--ink-soft);
+}
+
+.breadcrumb a:hover {
+   color: var(--up-gold-dark);
+}
+
+.breadcrumb .sep {
+   margin: 0 6px;
+   opacity: 0.5;
+}
+
+.detail-hero {
+   padding: 32px 0 56px;
+}
+
+.detail-hero-grid {
+   display: grid;
+   grid-template-columns: 1.6fr 1fr;
+   gap: 40px;
+   align-items: start;
+}
+
+.tag-row {
+   display: flex;
+   gap: 8px;
+   margin-bottom: 14px;
+}
+
+.tag {
+   display: inline-flex;
+   align-items: center;
+   font-family: var(--font-mono);
+   font-size: 11px;
+   letter-spacing: 0.06em;
+   text-transform: uppercase;
+   padding: 5px 10px;
+   border-radius: 999px;
+   background: var(--gold-tint);
+   color: var(--up-gold-dark);
+   font-weight: 600;
+}
+
+.tag.level {
+   background: var(--navy-tint);
+   color: var(--up-navy);
+}
+
+.detail-hero-main h1 {
+   font-size: clamp(28px, 3.6vw, 40px);
+   margin-bottom: 12px;
+}
+
+.detail-hero-main .lede {
+   font-size: 16px;
+   color: var(--ink-soft);
+   max-width: 56ch;
+   margin-bottom: 20px;
+}
+
+.meta-row {
+   display: flex;
+   flex-wrap: wrap;
+   align-items: center;
+   gap: 18px;
+   font-size: 13.5px;
+   color: var(--ink-soft);
+}
+
+.meta-row .meta-item {
+   display: inline-flex;
+   align-items: center;
+   gap: 6px;
+}
+
+.meta-row .stars {
+   color: var(--up-gold);
+   letter-spacing: 1px;
+}
+
+/* Sidebar */
+.detail-sidebar {
+   position: sticky;
+   top: 96px;
+   background: var(--white);
+   border: 1px solid var(--line);
+   border-radius: var(--radius-lg);
+   overflow: hidden;
+   box-shadow: var(--shadow-lg);
+}
+
+.sidebar-thumb {
+   height: 160px;
+   background-size: cover;
+   background-position: center;
+   background-color: var(--up-navy);
+   position: relative;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.play-btn {
+   width: 52px;
+   height: 52px;
+   border-radius: 50%;
+   background: rgba(255, 255, 255, 0.92);
+   border: none;
+   color: var(--up-navy);
+   font-size: 16px;
+   cursor: pointer;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   box-shadow: var(--shadow-sm);
+   transition: transform 0.2s var(--ease);
+}
+
+.play-btn:hover {
+   transform: scale(1.08);
+}
+
+.sidebar-body {
+   padding: 22px 22px 26px;
+}
+
+.sidebar-price {
+   font-family: var(--font-display);
+   font-weight: 700;
+   font-size: 28px;
+   color: var(--up-navy);
+   margin-bottom: 16px;
+}
+
+.sidebar-body .btn {
+   margin-bottom: 10px;
+}
+
+.sidebar-features {
+   list-style: none;
+   margin: 18px 0 0;
+   padding: 16px 0 0;
+   border-top: 1px solid var(--line);
+   display: flex;
+   flex-direction: column;
+   gap: 10px;
+   font-size: 13px;
+   color: var(--ink-soft);
+}
+
+/* Project focus */
+.project-focus {
+   display: flex;
+   gap: 16px;
+   align-items: flex-start;
+   background: var(--gold-tint);
+   border: 1px solid rgba(201, 162, 39, 0.25);
+   border-radius: var(--radius);
+   padding: 22px 24px;
+}
+
+.project-focus .pf-icon {
+   width: 40px;
+   height: 40px;
+   flex-shrink: 0;
+   border-radius: 50%;
+   background: var(--up-gold);
+   color: var(--up-navy);
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   font-size: 18px;
+}
+
+.project-focus h3 {
+   font-size: 15px;
+   margin-bottom: 4px;
+}
+
+.project-focus p {
+   font-size: 14px;
+   color: var(--ink-soft);
+   margin: 0;
+}
+
+/* What you'll learn */
+.check-grid {
+   list-style: none;
+   margin: 0;
+   padding: 0;
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   gap: 12px 24px;
+}
+
+.check-grid li {
+   display: flex;
+   gap: 10px;
+   align-items: flex-start;
+   font-size: 14px;
+   color: var(--ink);
+}
+
+.check-grid li::before {
+   content: "✓";
+   flex-shrink: 0;
+   width: 20px;
+   height: 20px;
+   border-radius: 50%;
+   background: var(--gold-tint);
+   color: var(--up-gold-dark);
+   font-size: 12px;
+   font-weight: 700;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   margin-top: 1px;
+}
+
+/* Curriculum */
+.curriculum-module {
+   border: 1px solid var(--line);
+   border-radius: var(--radius-sm);
+   margin-bottom: 10px;
+   overflow: hidden;
+}
+
+.curriculum-module summary {
+   list-style: none;
+   cursor: pointer;
+   padding: 14px 18px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   font-family: var(--font-body);
+   font-weight: 600;
+   font-size: 14.5px;
+   color: var(--up-navy);
+   background: var(--paper);
+}
+
+.curriculum-module summary::-webkit-details-marker {
+   display: none;
+}
+
+.curriculum-module summary .chev {
+   transition: transform 0.2s var(--ease);
+   color: var(--ink-soft);
+   font-size: 12px;
+}
+
+.curriculum-module[open] summary .chev {
+   transform: rotate(90deg);
+}
+
+.curriculum-module summary .mod-duration {
+   font-weight: 400;
+   font-size: 12.5px;
+   color: var(--ink-soft);
+   margin-left: auto;
+   margin-right: 14px;
+}
+
+.curriculum-lessons {
+   list-style: none;
+   margin: 0;
+   padding: 6px 18px 14px;
+}
+
+.curriculum-lessons li {
+   display: flex;
+   justify-content: space-between;
+   padding: 8px 0;
+   font-size: 13.5px;
+   color: var(--ink-soft);
+   border-top: 1px solid var(--line);
+}
+
+.curriculum-lessons li:first-child {
+   border-top: none;
+}
+
+/* Requirements */
+.req-list {
+   margin: 0;
+   padding-left: 20px;
+   color: var(--ink-soft);
+   font-size: 14px;
+   line-height: 1.8;
+}
+
+/* Instructor */
+.instructor-card {
+   display: flex;
+   gap: 20px;
+   align-items: flex-start;
+}
+
+.instructor-card .avatar {
+   width: 76px;
+   height: 76px;
+   flex-shrink: 0;
+   margin-bottom: 0;
+   font-size: 22px;
+}
+
+.instructor-card h3 {
+   font-size: 17px;
+   margin-bottom: 2px;
+}
+
+.instructor-role {
+   font-size: 12px;
+   color: var(--up-gold-dark);
+   text-transform: uppercase;
+   letter-spacing: 0.06em;
+   font-weight: 600;
+   margin-bottom: 8px;
+}
+
+.instructor-stats {
+   display: flex;
+   gap: 16px;
+   font-size: 13px;
+   color: var(--ink-soft);
+   margin-bottom: 10px;
+}
+
+.instructor-card p.bio {
+   font-size: 14px;
+   color: var(--ink-soft);
+   margin: 0;
+   max-width: 60ch;
+}
+
+@media (max-width: 900px) {
+   .detail-hero-grid {
+      grid-template-columns: 1fr;
+   }
+
+   .detail-sidebar {
+      position: static;
+   }
+
+   .check-grid {
+      grid-template-columns: 1fr;
+   }
+
+   .instructor-card {
+      flex-direction: column;
+   }
+}
