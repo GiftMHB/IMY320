@@ -190,7 +190,7 @@
 
     return `
       <li class="course-row">
-        <a class="course-row-link" href="course.html?id=${encodeURIComponent(course.id)}">
+        <a class="course-row-link" href="course-detail.html?id=${encodeURIComponent(course.id)}">
           <span class="course-row-icon" style="background:${accent}" aria-hidden="true">
             <span class="course-row-icon-fallback">${escapeHtml(initial)}</span>
             <img

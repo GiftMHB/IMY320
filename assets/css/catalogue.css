@@ -11,7 +11,6 @@
     border: 0;
 }
 
-/* ---------- Page header ---------- */
 .catalogue-hero {
     padding: 72px 0 40px;
     background: var(--paper);
@@ -29,7 +28,6 @@
     margin: 0;
 }
 
-/* ---------- Toolbar: filters + search ---------- */
 .catalogue-toolbar {
     position: sticky;
     top: 65px;
@@ -139,7 +137,6 @@
     background: var(--gold-tint);
 }
 
-/* ---------- Results count / empty state ---------- */
 .results-meta {
     padding: 20px 0 0;
     font-family: var(--font-mono);
@@ -160,7 +157,7 @@
     margin-bottom: 6px;
 }
 
-/* ---------- Course list ---------- */
+
 .course-list-section {
     padding: 28px 0 80px;
     background: var(--paper);

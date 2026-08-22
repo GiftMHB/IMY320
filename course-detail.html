@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course — CodeCampus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/course-detail.css" />
+</head>
+
+<body data-page="catalogue">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <!-- Everything below is filled in by course-detail.js -->
+    <section class="detail-hero">
+      <div class="wrap">
+        <nav class="breadcrumb" id="breadcrumb" aria-label="Breadcrumb"></nav>
+
+        <div class="detail-hero-grid">
+          <div class="detail-hero-main">
+            <div class="tag-row" id="hero-tags"></div>
+            <h1 id="course-title">Loading course…</h1>
+            <p class="lede" id="course-summary"></p>
+            <div class="meta-row" id="meta-row"></div>
+          </div>
+
+          <aside class="detail-sidebar" id="detail-sidebar">
+            <div class="sidebar-thumb" id="sidebar-thumb">
+              <button class="play-btn" type="button" aria-label="Preview course">▶</button>
+            </div>
+            <div class="sidebar-body">
+              <div class="sidebar-price" id="sidebar-price"></div>
+              <button class="btn btn-primary btn-block">Enroll now</button>
+              <button class="btn btn-ghost btn-block">Preview course</button>
+              <ul class="sidebar-features">
+                <li>∞ Lifetime access</li>
+                <li>🎓 Certificate on completion</li>
+                <li>📱 Access on mobile and TV</li>
+              </ul>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <div class="wrap">
+        <h2>About this course</h2>
+        <p id="about-text"></p>
+        <div class="project-focus" id="project-focus"></div>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <div class="wrap">
+        <h2>What you'll learn</h2>
+        <ul class="check-grid" id="learn-list"></ul>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <div class="wrap">
+        <h2>Course curriculum</h2>
+        <div id="curriculum-list"></div>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <div class="wrap">
+        <h2>Requirements</h2>
+        <ul class="req-list" id="requirements-list"></ul>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <div class="wrap">
+        <h2>Instructor</h2>
+        <div class="instructor-card" id="instructor-card"></div>
+      </div>
+    </section>
+
+    <section class="content-block section-alt">
+      <div class="wrap">
+        <h2>Student Reviews</h2>
+        <div class="testi-grid" id="reviews-grid"></div>
+      </div>
+    </section>
+
+    <section class="content-block">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-head-text">
+            <h2>You might also like</h2>
+          </div>
+          <a href="catalogue.html">View all →</a>
+        </div>
+        <div class="course-grid" id="related-grid"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/course-detail.js"></script>
+</body>
+
+</html>
