@@ -235,7 +235,7 @@ textarea:focus-visible {
 
 .hero {
     position: relative;
-    padding: 96px 0 72px;
+    padding: 50px 0 72px;
     overflow: hidden;
     margin: auto;
 }
@@ -286,10 +286,12 @@ textarea:focus-visible {
 }
 
 .rotator {
-    display: inline-block;
+    display: inline-flex;
+    min-width: 9.5ch;
     position: relative;
     color: var(--up-gold-dark);
     font-family: var(--font-display);
+    white-space: nowrap;
 }
 
 .rotator::after {
@@ -297,14 +299,13 @@ textarea:focus-visible {
     display: inline-block;
     width: 3px;
     height: 0.9em;
-    margin-left: 4px;
     background: var(--up-gold-dark);
     vertical-align: -0.1em;
     animation: caret-blink 1s steps(1) infinite;
 }
 
 .rotator .rotator-word {
-    display: inline-block;
+    grid-area: 1 / 1;
     animation: rotator-in 0.4s var(--ease) both;
 }
 
@@ -932,15 +933,33 @@ section {
 .social-links {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 12px;
 }
 
-.social-links a {
+.social-links span {
     color: var(--up-navy);
-    font-weight: 700;
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border: 1px solid rgba(4, 30, 66, 0.18);
+    border-radius: 50%;
+    font-size: 18px;
+    text-decoration: none;
+    transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+
+.social-links span:hover {
+    color: var(--up-gold-dark);
+    background: rgba(201, 162, 39, 0.12);
+    border-color: var(--up-gold);
+}
+
+.social-icon-newsletter {
+    font-style: normal;
+    font-size: 20px;
+    line-height: 1;
 }
 
 .footer-columns {
