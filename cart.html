@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart — CodeCampus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/cart.css" />
+</head>
+
+<body data-page="cart">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="cart-hero">
+      <div class="wrap">
+        <h1>Your Cart</h1>
+        <p class="lede">Review your courses, then check out when you're ready.</p>
+      </div>
+    </section>
+
+    <section class="cart-section">
+      <div class="wrap cart-grid">
+        <div class="cart-items" id="cart-items" aria-live="polite"></div>
+
+        <aside class="cart-summary" id="cart-summary">
+          <h3>Order summary</h3>
+          <div class="summary-row">
+            <span id="summary-count">0 courses</span>
+            <span id="summary-subtotal">R0</span>
+          </div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="summary-total">R0</span>
+          </div>
+          <button class="btn btn-primary btn-block" id="checkout-btn">Proceed to checkout</button>
+          <a class="cart-continue" href="catalogue.html">← Continue browsing</a>
+        </aside>
+      </div>
+
+      <div class="empty-cart" id="empty-cart" hidden>
+        <div class="empty-icon">🛒</div>
+        <h3>Your cart is empty</h3>
+        <p>Find a course you're excited about and add it here.</p>
+        <a class="btn btn-primary" href="catalogue.html">Browse courses</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/cart-page.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+.order-recap {
+    text-align: left;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin: 0 auto;
+}
+
+.order-recap-line {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px 0;
+}
+
+.order-recap-line + .order-recap-line {
+    border-top: 1px solid var(--line);
+}
+
+.order-recap-thumb {
+    width: 44px;
+    height: 44px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.order-recap-line-info {
+    flex: 1;
+    text-align: left;
+    min-width: 0;
+}
+
+.order-recap-line-info h4 {
+    font-size: 13.5px;
+    margin: 0 0 2px;
+    color: var(--up-navy);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-recap-line-info span {
+    font-size: 12px;
+    color: var(--ink-soft);
+}
+
+.order-recap-total {
+    display: flex;
+    justify-content: space-between;
+    max-width: none;
+    font-family: var(--font-mono);
+    font-size: 13px;
+    color: var(--ink-soft);
+    padding: 10px 4px 0;
+}

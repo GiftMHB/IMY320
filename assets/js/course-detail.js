@@ -150,6 +150,50 @@ function renderRelated(course, allCourses) {
   `).join("");
 }
 
+function renderActions(course) {
+  const enrollBtn = document.getElementById("enroll-btn");
+  const cartBtn = document.getElementById("cart-btn");
+  if (!enrollBtn || !cartBtn) return;
+
+  function paint() {
+    if (isEnrolled(course.id)) {
+      enrollBtn.textContent = "Continue course →";
+      enrollBtn.onclick = () => (window.location.href = `course-player.html?id=${encodeURIComponent(course.id)}`);
+      cartBtn.style.display = "none";
+      return;
+    }
+
+    enrollBtn.textContent = course.price === 0 ? "Enroll now — Free" : "Enroll now";
+    enrollBtn.onclick = () => {
+      if (course.price === 0) {
+        enrollCourse(course.id);
+        showToast("You're enrolled!", `${course.title} is ready to start.`, "success");
+        setTimeout(() => (window.location.href = `course-player.html?id=${encodeURIComponent(course.id)}`), 650);
+      } else {
+        addToCart(course.id);
+        window.location.href = "checkout.html?buyNow=" + encodeURIComponent(course.id);
+      }
+    };
+
+    cartBtn.style.display = course.price === 0 ? "none" : "inline-flex";
+    if (isInCart(course.id)) {
+      cartBtn.textContent = "✓ In cart";
+      cartBtn.onclick = () => (window.location.href = "cart.html");
+    } else {
+      cartBtn.textContent = "Add to cart";
+      cartBtn.onclick = () => {
+        addToCart(course.id);
+        showToast("Added to cart", `${course.title} was added to your cart.`, "success");
+        const badge = document.getElementById("cart-badge");
+        if (badge) { badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump"); }
+        paint();
+      };
+    }
+  }
+
+  paint();
+}
+
 async function init() {
   const params = new URLSearchParams(window.location.search);
   const id = params.get("id");
@@ -184,6 +228,7 @@ async function init() {
   renderInstructor(course, details);
   renderReviews(details);
   renderRelated(course, allCourses);
+  renderActions(course);
 }
 
 document.addEventListener("DOMContentLoaded", init);
