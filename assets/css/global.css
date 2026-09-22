@@ -235,7 +235,7 @@ textarea:focus-visible {
 
 .hero {
     position: relative;
-    padding: 96px 0 72px;
+    padding: 50px 0 72px;
     overflow: hidden;
     margin: auto;
 }
@@ -286,10 +286,12 @@ textarea:focus-visible {
 }
 
 .rotator {
-    display: inline-block;
+    display: inline-flex;
+    min-width: 9.5ch;
     position: relative;
     color: var(--up-gold-dark);
     font-family: var(--font-display);
+    white-space: nowrap;
 }
 
 .rotator::after {
@@ -297,14 +299,13 @@ textarea:focus-visible {
     display: inline-block;
     width: 3px;
     height: 0.9em;
-    margin-left: 4px;
     background: var(--up-gold-dark);
     vertical-align: -0.1em;
     animation: caret-blink 1s steps(1) infinite;
 }
 
 .rotator .rotator-word {
-    display: inline-block;
+    grid-area: 1 / 1;
     animation: rotator-in 0.4s var(--ease) both;
 }
 
