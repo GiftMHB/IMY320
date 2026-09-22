@@ -1,0 +1,241 @@
+.player-guard {
+    padding: 96px 0;
+}
+
+.guard-card {
+    max-width: 480px;
+    margin: 0 auto;
+    text-align: center;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 40px 32px;
+}
+
+.guard-card p {
+    color: var(--ink-soft);
+    margin-bottom: 20px;
+}
+
+.player-progress-bar {
+    background: var(--up-navy);
+    color: #fff;
+    padding: 18px 0;
+}
+
+.progress-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+}
+
+.back-link {
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.65);
+    display: inline-block;
+    margin-bottom: 4px;
+}
+
+.back-link:hover {
+    color: #fff;
+}
+
+.progress-text h1 {
+    color: #fff;
+    font-size: 18px;
+    margin: 0;
+}
+
+.progress-track-wrap {
+    min-width: 240px;
+    text-align: right;
+}
+
+#progress-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    color: var(--up-gold);
+    margin-bottom: 6px;
+}
+
+.progress-track {
+    width: 240px;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 0%;
+    background: var(--up-gold);
+    border-radius: 999px;
+    transition: width 0.5s var(--ease);
+}
+
+.player-body {
+    padding: 32px 0 72px;
+}
+
+.player-grid {
+    display: grid;
+    grid-template-columns: 1.7fr 1fr;
+    gap: 32px;
+    align-items: start;
+}
+
+.video-stage {
+    aspect-ratio: 16/9;
+    background: var(--up-navy);
+    background-image: radial-gradient(circle at 30% 20%, rgba(201, 162, 39, 0.25), transparent 60%);
+    border-radius: var(--radius-lg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+}
+
+.video-placeholder {
+    text-align: center;
+    color: #fff;
+}
+
+.play-icon {
+    width: 68px;
+    height: 68px;
+    border-radius: 50%;
+    background: var(--up-gold);
+    color: var(--up-navy);
+    border: none;
+    font-size: 22px;
+    cursor: pointer;
+    margin-bottom: 14px;
+    transition: transform 0.2s var(--ease);
+}
+
+.play-icon:hover {
+    transform: scale(1.08);
+}
+
+.video-placeholder span {
+    display: block;
+    font-size: 14px;
+    opacity: 0.85;
+    max-width: 40ch;
+    margin: 0 auto;
+}
+
+.lesson-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    margin-top: 22px;
+    flex-wrap: wrap;
+}
+
+.lesson-actions h2 {
+    font-size: 19px;
+    margin-bottom: 2px;
+}
+
+.lesson-module {
+    color: var(--ink-soft);
+    font-size: 13px;
+    margin: 0;
+}
+
+.player-sidebar {
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-sm);
+    padding: 20px;
+    max-height: 620px;
+    overflow-y: auto;
+}
+
+.player-sidebar h3 {
+    font-size: 15px;
+    margin-bottom: 12px;
+}
+
+.nav-module {
+    margin-bottom: 12px;
+}
+
+.nav-module-title {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--up-gold-dark);
+    margin-bottom: 6px;
+}
+
+.nav-lesson {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    text-align: left;
+    background: none;
+    border: none;
+    border-radius: var(--radius-sm);
+    padding: 9px 10px;
+    cursor: pointer;
+    font-size: 13.5px;
+    color: var(--ink);
+    transition: background 0.2s var(--ease);
+}
+
+.nav-lesson:hover {
+    background: var(--navy-tint);
+}
+
+.nav-lesson.active {
+    background: var(--gold-tint);
+    font-weight: 600;
+}
+
+.nav-lesson-check {
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 2px solid var(--line);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    color: transparent;
+    transition: background 0.2s var(--ease), border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+
+.nav-lesson.done .nav-lesson-check {
+    background: #2E7D4F;
+    border-color: #2E7D4F;
+    color: #fff;
+}
+
+.nav-lesson-title {
+    flex: 1;
+}
+
+.nav-lesson-duration {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    color: var(--ink-soft);
+}
+
+@media (max-width: 900px) {
+    .player-grid {
+        grid-template-columns: 1fr;
+    }
+}

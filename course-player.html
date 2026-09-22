@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course player — CodeCampus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/course-player.css" />
+</head>
+
+<body data-page="player">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <div class="player-guard" id="player-guard" hidden>
+      <div class="wrap">
+        <div class="guard-card">
+          <h2>You're not enrolled in this course yet</h2>
+          <p>Enroll to unlock the lessons and start tracking your progress.</p>
+          <a class="btn btn-primary" id="guard-enroll-link" href="catalogue.html">View course</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="player-app" hidden>
+      <section class="player-progress-bar">
+        <div class="wrap progress-wrap">
+          <div class="progress-text">
+            <a class="back-link" href="course-detail.html" id="back-to-course">← Back to course</a>
+            <h1 id="player-course-title">Loading…</h1>
+          </div>
+          <div class="progress-track-wrap">
+            <span id="progress-label">0 of 0 lessons complete</span>
+            <div class="progress-track">
+              <div class="progress-fill" id="progress-fill"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="player-body">
+        <div class="wrap player-grid">
+          <div class="player-main">
+            <div class="video-stage" id="video-stage">
+              <div class="video-placeholder">
+                <button class="play-icon" type="button" aria-label="Play lesson">▶</button>
+                <span id="now-playing-title">Select a lesson</span>
+              </div>
+            </div>
+
+            <div class="lesson-actions">
+              <div>
+                <h2 id="lesson-heading">—</h2>
+                <p class="lesson-module" id="lesson-module-label"></p>
+              </div>
+              <button class="btn btn-primary" id="mark-complete-btn">Mark lesson complete</button>
+            </div>
+          </div>
+
+          <aside class="player-sidebar">
+            <h3>Course content</h3>
+            <div id="curriculum-nav"></div>
+          </aside>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/course-player.js"></script>
+</body>
+
+</html>
