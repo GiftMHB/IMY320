@@ -57,9 +57,15 @@ function renderFooter() {
         </a>
         <p class="footer-summary">Build practical software skills with guided, hands-on courses that end in real projects.</p>
         <div class="social-links">
-          <a href="#" aria-label="LinkedIn">LinkedIn</a>
-          <a href="#" aria-label="GitHub">GitHub</a>
-          <a href="#" aria-label="Newsletter">Newsletter</a>
+          <span aria-label="LinkedIn">
+            <i class="devicon-linkedin-plain" aria-hidden="true"></i>
+          </span>
+          <span aria-label="GitHub">
+            <i class="devicon-github-original" aria-hidden="true"></i>
+          </span>
+          <span aria-label="Newsletter">
+            <i class="social-icon-newsletter" aria-hidden="true">&#9993;</i>
+          </span>
         </div>
       </div>
 
@@ -76,9 +82,10 @@ function renderFooter() {
         <div class="footer-col">
           <h3>Tracks</h3>
           <ul class="footer-links">
-            <li><a href="catalogue.html">Python</a></li>
-            <li><a href="catalogue.html">Java & C++</a></li>
-            <li><a href="catalogue.html">React & TypeScript</a></li>
+            <li><a href="catalogue.html?language=Python">Python</a></li>
+            <li><a href="catalogue.html?language=C%2B%2B">C++</a></li>
+            <li><a href="catalogue.html?language=ReactJS">React</a></li>
+            <li><a href="catalogue.html?language=TypeScript">TypeScript</a></li>
           </ul>
         </div>
 

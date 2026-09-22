@@ -27,7 +27,7 @@
 
   let allCourses = [];
   let state = {
-    language: "all",
+    language: new URLSearchParams(window.location.search).get("language") || "all",
     level: "all",
     price: "all",
     query: "",
@@ -64,6 +64,11 @@
 
     if (els.languageSelect) {
       appendOptions(els.languageSelect, languages);
+      if (languages.includes(state.language)) {
+        els.languageSelect.value = state.language;
+      } else {
+        state.language = "all";
+      }
     }
     if (els.levelSelect) {
       appendOptions(els.levelSelect, levels);
@@ -119,16 +124,16 @@
           state.sort === "price-asc"
             ? "price-desc"
             : state.sort === "price-desc"
-            ? "default"
-            : "price-asc";
+              ? "default"
+              : "price-asc";
         els.sortBtn.setAttribute("data-sort", state.sort);
         els.sortBtn.setAttribute(
           "aria-label",
           state.sort === "price-asc"
             ? "Sorted by price: low to high"
             : state.sort === "price-desc"
-            ? "Sorted by price: high to low"
-            : "Sort by price"
+              ? "Sorted by price: high to low"
+              : "Sort by price"
         );
         render();
       });
