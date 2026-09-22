@@ -1,9 +1,3 @@
-/*
-  Small dependency-free confetti burst for the site's two "moment" screens:
-  order-success.html (Peak) and course-complete.html (End).
-  Respects prefers-reduced-motion, same convention as app.js.
-*/
-
 function launchConfetti(targetCanvas, opts) {
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   const canvas = targetCanvas || document.getElementById("confetti-canvas");

@@ -1,9 +1,3 @@
-/*
-  CodeCampus shared commerce + progress layer.
-  Everything here runs off localStorage, same pattern as auth.js.
-  Loaded on every page, before components.js.
-*/
-
 const CART_KEY = "codecampus_cart";
 const ENROLL_KEY = "codecampus_enrollments";
 const ORDERS_KEY = "codecampus_orders";

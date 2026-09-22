@@ -1,9 +1,3 @@
-/*
-  Generates a simple, branded certificate PDF on the client using jsPDF.
-  Used by course-complete.html and profile.html.
-  Requires window.jspdf (loaded via the jsPDF UMD build in the host page).
-*/
-
 function studentDisplayName() {
   const user = JSON.parse(localStorage.getItem("codecampus_current_user") || "null");
   return user && user.name ? user.name : "Guest Learner";

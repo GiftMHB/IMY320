@@ -25,7 +25,7 @@ async function loadCourses() {
     if (!res.ok) throw new Error("bad response");
     return await res.json();
   } catch (err) {
-    console.warn("Could not load data/courses.json — serve this site over a local server (e.g. Live Server) rather than opening the file directly.", err);
+    console.warn("Could not load data/courses.json serve this site over a local server (e.g. Live Server) rather than opening the file directly.", err);
     return null;
   }
 }
