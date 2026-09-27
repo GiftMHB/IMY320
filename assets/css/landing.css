@@ -46,13 +46,15 @@
 }
 
 .hero .wrap {
-  grid-template-columns: 1fr 1.05fr;   /* give the image column equal or slightly more room than text, instead of 1.1fr / 0.9fr favoring text */
+  grid-template-columns: 1fr 1.05fr;
+  /* give the image column equal or slightly more room than text, instead of 1.1fr / 0.9fr favoring text */
 }
 
 .hero-visual {
   position: relative;
   isolation: isolate;
-  padding: 20px;   /* reduced from 30px so more of the space goes to the image itself */
+  padding: 20px;
+  /* reduced from 30px so more of the space goes to the image itself */
 }
 
 .hero-visual::before {
@@ -71,9 +73,44 @@
   height: 100%;
   display: block;
   object-fit: cover;
-  aspect-ratio: 3 / 2;   /* was 4/3 — matches this photo's actual landscape proportions better */
+  aspect-ratio: 3 / 2;
+  /* was 4/3 — matches this photo's actual landscape proportions better */
   border-radius: var(--radius-lg);
   box-shadow: 0 30px 60px -12px rgba(0, 51, 160, 0.4), 0 0 0 1px rgba(0, 51, 160, 0.08);
+}
+
+@media (max-width: 900px) {
+  .hero {
+    padding: 40px 0 56px;
+  }
+
+  .hero .wrap {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .hero-visual {
+    padding: 0;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero {
+    padding: 32px 0 48px;
+  }
+
+  .hero h1 {
+    font-size: clamp(32px, 10vw, 44px);
+    line-height: 1.1;
+  }
+
+  .hero p.lede {
+    font-size: 16px;
+  }
+
+  .hero-image {
+    aspect-ratio: 4 / 3;
+  }
 }
 
 .cat-grid {
@@ -189,14 +226,16 @@
 
 .course-thumb::before {
   content: "";
-  position: absolute; inset: 0;
-  background: linear-gradient(180deg, rgba(4,30,66,0.15) 0%, rgba(4,30,66,0.55) 100%);
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(4, 30, 66, 0.15) 0%, rgba(4, 30, 66, 0.55) 100%);
 }
 
 .course-thumb .thumb-tag {
   position: absolute;
-  top: 14px; left: 14px;
-  background: rgba(255,255,255,0.16);
+  top: 14px;
+  left: 14px;
+  background: rgba(255, 255, 255, 0.16);
   color: var(--white);
   font-family: var(--font-body);
   font-size: 12px;
@@ -209,7 +248,8 @@
 
 .course-thumb .thumb-price {
   position: absolute;
-  bottom: 14px; right: 14px;
+  bottom: 14px;
+  right: 14px;
   background: var(--up-gold);
   color: var(--up-navy);
   font-weight: 700;
