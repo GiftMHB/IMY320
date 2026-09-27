@@ -173,6 +173,9 @@
     if (els.resultsMeta) {
       els.resultsMeta.textContent =
         results.length + (results.length === 1 ? " course found" : " courses found");
+      els.resultsMeta.classList.remove("pulse-update");
+      void els.resultsMeta.offsetWidth;
+      els.resultsMeta.classList.add("pulse-update");
     }
 
     if (!els.list) return;
@@ -185,6 +188,33 @@
 
     if (els.empty) els.empty.hidden = true;
     els.list.innerHTML = results.map(courseRowTemplate).join("");
+    bindQuickAddButtons();
+  }
+
+  function bindQuickAddButtons() {
+    els.list.querySelectorAll(".quick-add-btn").forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        const id = btn.dataset.id;
+        if (typeof isEnrolled === "function" && isEnrolled(id)) {
+          window.location.href = `course-player.html?id=${encodeURIComponent(id)}`;
+          return;
+        }
+        if (typeof addToCart === "function" && addToCart(id)) {
+          btn.classList.add("added");
+          btn.setAttribute("aria-label", "Added to cart");
+          const badge = document.getElementById("cart-badge");
+          if (badge) { badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump"); }
+          if (typeof showToast === "function") {
+            const course = allCourses.find((c) => c.id === id);
+            showToast("Added to cart", course ? course.title : "Course added.", "success");
+          }
+        } else {
+          window.location.href = "cart.html";
+        }
+      });
+    });
   }
 
   function courseRowTemplate(course) {
@@ -223,6 +253,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
           </span>
         </a>
+        <button class="quick-add-btn" data-id="${course.id}" type="button" aria-label="Quick add to cart">+</button>
       </li>
     `;
   }
