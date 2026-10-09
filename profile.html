@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Learning — CodeCampus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/profile.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body data-page="profile">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="profile-hero">
+      <div class="wrap">
+        <h1>My Learning</h1>
+        <p class="lede" id="profile-greeting">Track your progress and revisit what you've earned.</p>
+      </div>
+    </section>
+
+    <section class="profile-section">
+      <div class="wrap">
+        <div class="empty-state" id="profile-empty" hidden>
+          <div class="empty-icon">🎒</div>
+          <h3>Nothing here yet</h3>
+          <p>Enroll in a course to start building your learning history.</p>
+          <a class="btn btn-primary" href="catalogue.html">Browse courses</a>
+        </div>
+
+        <div id="profile-content" hidden>
+          <div class="profile-block">
+            <h2>In progress</h2>
+            <div class="progress-grid" id="in-progress-grid"></div>
+          </div>
+
+          <div class="profile-block">
+            <h2>Completed</h2>
+            <div class="progress-grid" id="completed-grid"></div>
+          </div>
+
+          <div class="profile-block">
+            <h2>Order history</h2>
+            <div id="order-history-list"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/certificate.js"></script>
+  <script src="assets/js/profile.js"></script>
+</body>
+
+</html>

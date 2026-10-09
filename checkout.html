@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — CodeCampus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/checkout.css" />
+</head>
+
+<body data-page="checkout">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="checkout-hero">
+      <div class="wrap">
+        <a class="back-link" href="cart.html">← Back to cart</a>
+        <h1>Checkout</h1>
+      </div>
+    </section>
+
+    <section class="checkout-section">
+      <div class="wrap checkout-grid">
+        <form class="checkout-form" id="checkout-form" novalidate>
+          <div class="form-block">
+            <h2>Contact details</h2>
+            <label class="field" id="name-field">
+              <span>Full name</span>
+              <input type="text" name="name" autocomplete="name" required />
+              <span class="field-error"></span>
+            </label>
+            <label class="field" id="email-field">
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required />
+              <span class="field-error"></span>
+            </label>
+          </div>
+
+          <div class="form-block">
+            <h2>Payment details</h2>
+            <p class="mock-note">Demo checkout — no real payment is processed.</p>
+            <label class="field" id="card-field">
+              <span>Card number</span>
+              <input type="text" name="card" inputmode="numeric" placeholder="4242 4242 4242 4242" maxlength="19"
+                required />
+              <span class="field-error"></span>
+            </label>
+            <div class="field-row">
+              <label class="field" id="expiry-field">
+                <span>Expiry</span>
+                <input type="text" name="expiry" placeholder="MM/YY" maxlength="5" required />
+                <span class="field-error"></span>
+              </label>
+              <label class="field" id="cvv-field">
+                <span>CVV</span>
+                <input type="text" name="cvv" inputmode="numeric" placeholder="123" maxlength="3" required />
+                <span class="field-error"></span>
+              </label>
+            </div>
+          </div>
+
+          <button class="btn btn-primary btn-block" type="submit" id="pay-btn">Complete purchase</button>
+        </form>
+
+        <aside class="order-summary" id="order-summary">
+          <h3>Order summary</h3>
+          <div id="order-items"></div>
+          <div class="summary-row summary-total">
+            <span>Total</span>
+            <span id="order-total">R0</span>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/checkout.js"></script>
+</body>
+
+</html>

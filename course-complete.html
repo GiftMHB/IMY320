@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Course complete — CodeCampus</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="assets/css/global.css" />
+  <link rel="stylesheet" href="assets/css/course-complete.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+
+<body data-page="course-complete">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="site-header" id="site-header"></header>
+
+  <main id="main">
+    <section class="moment-screen end-moment">
+      <canvas id="confetti-canvas"></canvas>
+
+      <div class="moment-card end-card">
+        <div class="moment-icon end-icon">🏆</div>
+
+        <div class="moment-eyebrow">Course complete</div>
+        <h1 id="end-heading">You did it!</h1>
+        <p class="moment-sub" id="end-sub">You've finished every lesson. Here's what you achieved.</p>
+
+        <div class="cert-wrap" id="cert-wrap"></div>
+
+        <div class="end-stats" id="end-stats"></div>
+
+        <div class="moment-actions">
+          <button class="btn btn-primary" id="download-cert-btn">Download certificate</button>
+          <a class="btn btn-ghost" id="dashboard-link" href="profile.html">Go to my dashboard</a>
+          <a class="btn btn-ghost" href="catalogue.html">Browse more courses</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/components.js"></script>
+  <script src="assets/js/celebrate.js"></script>
+  <script src="assets/js/certificate.js"></script>
+  <script src="assets/js/course-complete.js"></script>
+</body>
+
+</html>
