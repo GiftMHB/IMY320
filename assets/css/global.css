@@ -1458,6 +1458,12 @@ section {
     gap: 12px;
 }
 
+.nav-greeting {
+    color: var(--ink-soft);
+    font-size: 13px;
+    white-space: nowrap;
+}
+
 /* ---- results-meta pulse used on catalogue filter/search feedback ---- */
 .pulse-update {
     animation: results-pulse 0.4s var(--ease);

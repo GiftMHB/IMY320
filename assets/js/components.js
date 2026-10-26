@@ -12,8 +12,8 @@ function renderHeader() {
         <span class="logo-mark"></span> CodeCampus
       </a>
       <ul class="nav-links">
-        <li>${link("index.html", "Home", "landing")}</li>
         <li>${link("catalogue.html", "Courses", "catalogue")}</li>
+        <li>${link("profile.html", "My Learning", "profile")}</li>
         <li>${link("about.html", "About", "about")}</li>
       </ul>
       <div class="nav-actions">
@@ -42,8 +42,7 @@ function renderAuthState() {
 
   if (user) {
     slot.innerHTML = `
-      <a class="btn btn-ghost" href="profile.html">My Learning</a>
-      <span style="font-size:13px; opacity:0.7;">Hi, ${escapeHtml(user.name)}</span>
+      <span class="nav-greeting">Hi, ${escapeHtml(user.name)}</span>
       <button class="btn btn-ghost" id="logout-btn">Log out</button>
     `;
     document.getElementById("logout-btn").addEventListener("click", () => {
@@ -89,24 +88,6 @@ function renderFooter() {
             <li><a href="index.html">Home</a></li>
             <li><a href="catalogue.html">Courses</a></li>
             <li><a href="about.html">About</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>Tracks</h3>
-          <ul class="footer-links">
-            <li><a href="catalogue.html?language=Python">Python</a></li>
-            <li><a href="catalogue.html?language=C%2B%2B">C++</a></li>
-            <li><a href="catalogue.html?language=ReactJS">React</a></li>
-            <li><a href="catalogue.html?language=TypeScript">TypeScript</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h3>Resources</h3>
-          <ul class="footer-links">
-            <li><a href="#" onclick="return false;">Learning roadmap</a></li>
-            <li><a href="#" onclick="return false;">Privacy</a></li>
           </ul>
         </div>
       </div>
