@@ -125,6 +125,112 @@
   gap: 24px;
 }
 
+.featured-course-list {
+  display: grid;
+  gap: 12px;
+  margin-top: 18px;
+}
+
+.featured-course {
+  position: relative;
+  display: grid;
+  grid-template-columns: 52px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 20px;
+  padding: 20px 24px;
+  overflow: hidden;
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 16px rgba(4, 30, 66, 0.035);
+}
+
+.featured-course::before {
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--up-gold), var(--up-blue));
+  content: "";
+}
+
+.featured-course-icon {
+  display: grid;
+  width: 48px;
+  height: 48px;
+  place-items: center;
+  color: var(--up-navy);
+  background: var(--navy-tint);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  font-size: 24px;
+}
+
+.featured-course-copy {
+  min-width: 0;
+}
+
+.featured-course-category {
+  margin-bottom: 4px;
+  color: var(--up-gold-dark);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.featured-course-copy h3 {
+  margin: 0 0 5px;
+  font-size: 16px;
+}
+
+.featured-course-copy p {
+  display: -webkit-box;
+  margin: 0;
+  overflow: hidden;
+  color: var(--ink-soft);
+  font-size: 13px;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.featured-course-meta {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  color: var(--ink-soft);
+  font-size: 12px;
+  white-space: nowrap;
+}
+
+.featured-course-level {
+  padding: 5px 10px;
+  color: var(--up-navy);
+  background: var(--navy-tint);
+  border-radius: 999px;
+  font-weight: 600;
+}
+
+.featured-course-price {
+  min-width: 54px;
+  color: var(--up-navy);
+  font-size: 14px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.featured-catalogue-link {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.featured-catalogue-link .btn {
+  gap: 12px;
+}
+
 .steps-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -170,8 +276,7 @@
   margin-bottom: 28px;
 }
 
-#category-grid,
-#course-grid {
+#category-grid {
   margin-top: 18px;
 }
 
@@ -186,6 +291,18 @@
 
   .course-grid {
     grid-template-columns: 1fr;
+  }
+
+  .featured-course {
+    grid-template-columns: 48px minmax(0, 1fr);
+    gap: 16px;
+  }
+
+  .featured-course-meta {
+    grid-column: 2;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 10px 16px;
   }
 
   .steps-grid {

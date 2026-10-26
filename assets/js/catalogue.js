@@ -22,7 +22,7 @@
     levelSelect: document.getElementById("filter-level"),
     priceSelect: document.getElementById("filter-price"),
     searchInput: document.getElementById("course-search"),
-    sortBtn: document.getElementById("sort-toggle")
+    sortSelect: document.getElementById("sort-select")
   };
 
   let allCourses = [];
@@ -31,7 +31,7 @@
     level: "all",
     price: "all",
     query: "",
-    sort: "default" // 'default' | 'price-asc' | 'price-desc'
+    sort: "default"
   };
 
   init();
@@ -72,6 +72,9 @@
     }
     if (els.levelSelect) {
       appendOptions(els.levelSelect, levels);
+    }
+    if (els.sortSelect) {
+      els.sortSelect.value = state.sort;
     }
   }
 
@@ -118,23 +121,9 @@
         }, 150);
       });
     }
-    if (els.sortBtn) {
-      els.sortBtn.addEventListener("click", () => {
-        state.sort =
-          state.sort === "price-asc"
-            ? "price-desc"
-            : state.sort === "price-desc"
-              ? "default"
-              : "price-asc";
-        els.sortBtn.setAttribute("data-sort", state.sort);
-        els.sortBtn.setAttribute(
-          "aria-label",
-          state.sort === "price-asc"
-            ? "Sorted by price: low to high"
-            : state.sort === "price-desc"
-              ? "Sorted by price: high to low"
-              : "Sort by price"
-        );
+    if (els.sortSelect) {
+      els.sortSelect.addEventListener("change", (e) => {
+        state.sort = e.target.value;
         render();
       });
     }

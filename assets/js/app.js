@@ -38,7 +38,7 @@ function renderCategories(courses) {
   courses.forEach(c => { counts[c.category] = (counts[c.category] || 0) + 1; });
 
   grid.innerHTML = Object.entries(counts).map(([category, count]) => `
-    <a class="cat-tile reveal" href="catalogue.html?category=${encodeURIComponent(category)}">
+    <a class="cat-tile reveal" href="catalogue.html?language=${encodeURIComponent(category)}">
       <div class="cat-icon"><i class="${CATEGORY_ICONS[category] || DEFAULT_ICON}"></i></div>
       <h3>${category}</h3>
       <div class="cat-count">${count} course${count === 1 ? "" : "s"}</div>
@@ -53,18 +53,19 @@ function renderCourseCards(courses) {
   if (!grid) return;
 
   grid.innerHTML = courses.map(c => `
-    <article class="course-card reveal">
-      <div class="course-thumb" style="background-image: url('${c.image}');">
-        <span class="thumb-tag">${c.category}</span>
-        <span class="thumb-price">${formatPrice(c.price)}</span>
+    <article class="featured-course reveal">
+      <div class="featured-course-icon" aria-hidden="true">
+        <i class="${CATEGORY_ICONS[c.category] || DEFAULT_ICON}"></i>
       </div>
-      <div class="course-body">
+      <div class="featured-course-copy">
+        <div class="featured-course-category">${c.category}</div>
         <h3>${c.title}</h3>
         <p>${c.description}</p>
-        <div class="course-meta">
-          <span class="level">${c.level}</span>
-          <span>${c.durationHours}h · ${c.instructor}</span>
-        </div>
+      </div>
+      <div class="featured-course-meta">
+        <span class="featured-course-level">${c.level}</span>
+        <span>${c.durationHours}h · ${c.instructor}</span>
+        <span class="featured-course-price">${formatPrice(c.price)}</span>
       </div>
     </article>
   `).join("");
