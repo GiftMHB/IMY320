@@ -253,7 +253,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
           </span>
         </a>
-        <button class="quick-add-btn" data-id="${course.id}" type="button" aria-label="Quick add to cart">+</button>
+          <button class="quick-add-btn" data-id="${course.id}" type="button" aria-label="Quick add to cart">+</button>
       </li>
     `;
   }

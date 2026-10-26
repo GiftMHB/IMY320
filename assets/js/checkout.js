@@ -11,6 +11,11 @@ function fieldErr(fieldEl, message) {
 let checkoutCourses = [];
 
 async function initCheckout() {
+  if (!currentUserEmail()) {
+    window.location.href = "login.html";
+    return;
+  }
+
   let allCourses = [];
   try {
     const res = await fetch("data/courses.json");

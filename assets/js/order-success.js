@@ -4,7 +4,7 @@ function formatPriceR3(price) {
 
 function initOrderSuccess() {
   const params = new URLSearchParams(window.location.search);
-  let orderId = params.get("order") || localStorage.getItem("codecampus_last_order_id");
+  let orderId = params.get("order") || getLastOrderId();
   const order = orderId ? getOrder(orderId) : null;
 
   if (!order) {
