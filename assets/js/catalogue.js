@@ -22,12 +22,16 @@
     levelSelect: document.getElementById("filter-level"),
     priceSelect: document.getElementById("filter-price"),
     searchInput: document.getElementById("course-search"),
-    sortSelect: document.getElementById("sort-select")
+    sortSelect: document.getElementById("sort-select"),
+    clearBtn: document.getElementById("clear-filters")
   };
 
   let allCourses = [];
   let state = {
-    language: new URLSearchParams(window.location.search).get("language") || "all",
+    language: (function () {
+      const q = new URLSearchParams(window.location.search);
+      return q.get("language") || q.get("category") || "all";
+    })(),
     level: "all",
     price: "all",
     query: "",
@@ -121,12 +125,33 @@
         }, 150);
       });
     }
+    if (els.clearBtn) {
+      els.clearBtn.addEventListener("click", clearFilters);
+    }
     if (els.sortSelect) {
       els.sortSelect.addEventListener("change", (e) => {
         state.sort = e.target.value;
         render();
       });
     }
+  }
+
+  function hasActiveFilters() {
+    return state.language !== "all" || state.level !== "all" || state.price !== "all" || state.query !== "";
+  }
+
+  function clearFilters() {
+    state.language = "all";
+    state.level = "all";
+    state.price = "all";
+    state.query = "";
+    state.sort = "default";
+    if (els.languageSelect) els.languageSelect.value = "all";
+    if (els.levelSelect) els.levelSelect.value = "all";
+    if (els.priceSelect) els.priceSelect.value = "all";
+    if (els.searchInput) els.searchInput.value = "";
+    if (els.sortSelect) els.sortSelect.value = "default";
+    render();
   }
 
   function getFiltered() {
@@ -151,6 +176,10 @@
       results = results.slice().sort((a, b) => a.price - b.price);
     } else if (state.sort === "price-desc") {
       results = results.slice().sort((a, b) => b.price - a.price);
+    } else if (state.sort === "duration-asc") {
+      results = results.slice().sort((a, b) => a.durationHours - b.durationHours);
+    } else if (state.sort === "title-asc") {
+      results = results.slice().sort((a, b) => a.title.localeCompare(b.title));
     }
 
     return results;
@@ -166,6 +195,8 @@
       void els.resultsMeta.offsetWidth;
       els.resultsMeta.classList.add("pulse-update");
     }
+
+    if (els.clearBtn) els.clearBtn.hidden = !hasActiveFilters();
 
     if (!els.list) return;
 

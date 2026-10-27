@@ -12,6 +12,7 @@
     rel="stylesheet">
   <link rel="stylesheet" href="assets/css/global.css" />
   <link rel="stylesheet" href="assets/css/course-player.css" />
+  <link rel="stylesheet" href="assets/css/reviews.css" />
 </head>
 
 <body data-page="player">
@@ -37,9 +38,12 @@
             <h1 id="player-course-title">Loading…</h1>
           </div>
           <div class="progress-track-wrap">
-            <span id="progress-label">0 of 0 lessons complete</span>
-            <div class="progress-track">
-              <div class="progress-fill" id="progress-fill"></div>
+            <div class="progress-percent" id="progress-percent">0%</div>
+            <div class="progress-info">
+              <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="progress-track">
+                <div class="progress-fill" id="progress-fill"></div>
+              </div>
+              <span id="progress-label">0 of 0 lessons complete</span>
             </div>
           </div>
         </div>
@@ -48,6 +52,16 @@
       <section class="player-body">
         <div class="wrap player-grid">
           <div class="player-main">
+            <div class="completed-banner" id="completed-banner" hidden>
+              <div>
+                <strong>🏆 Course completed</strong>
+                <span id="completed-date"></span>
+              </div>
+              <div class="completed-actions">
+                <a class="btn btn-ghost" id="banner-certificate" href="course-complete.html">View certificate</a>
+                <button class="btn btn-primary" id="banner-review" type="button">Add Your Review</button>
+              </div>
+            </div>
             <div class="video-stage" id="video-stage">
               <div class="video-placeholder">
                 <button class="play-icon" type="button" aria-label="Play lesson">▶</button>
@@ -57,10 +71,22 @@
 
             <div class="lesson-actions">
               <div>
-                <h2 id="lesson-heading">—</h2>
                 <p class="lesson-module" id="lesson-module-label"></p>
+                <h2 id="lesson-heading">—</h2>
               </div>
-              <button class="btn btn-primary" id="mark-complete-btn">Mark lesson complete</button>
+              <div class="lesson-buttons">
+                <button class="btn btn-ghost" id="prev-lesson-btn" type="button">← Previous</button>
+                <button class="btn btn-primary" id="mark-complete-btn" type="button">Mark lesson complete</button>
+                <button class="btn btn-ghost" id="next-lesson-btn" type="button">Next →</button>
+              </div>
+            </div>
+
+            <div class="lesson-overview">
+              <h3>Overview</h3>
+              <p id="overview-text"></p>
+              <h4>What you'll learn</h4>
+              <ul class="overview-list" id="overview-learn"></ul>
+              <p class="overview-instructor" id="overview-instructor"></p>
             </div>
           </div>
 
@@ -75,6 +101,7 @@
 
   <footer class="site-footer" id="site-footer"></footer>
   <script src="assets/js/cart.js"></script>
+  <script src="assets/js/reviews.js"></script>
   <script src="assets/js/components.js"></script>
   <script src="assets/js/course-player.js"></script>
 </body>

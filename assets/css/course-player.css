@@ -50,21 +50,33 @@
 }
 
 .progress-track-wrap {
-    min-width: 240px;
-    text-align: right;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.progress-percent {
+    font-family: var(--font-display);
+    font-size: 30px;
+    font-weight: 700;
+    color: var(--up-gold);
+    line-height: 1;
+}
+
+.progress-info {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
 }
 
 #progress-label {
-    display: block;
-    font-family: var(--font-mono);
-    font-size: 12px;
-    color: var(--up-gold);
-    margin-bottom: 6px;
+    font-size: 12.5px;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 .progress-track {
-    width: 240px;
-    height: 8px;
+    width: 260px;
+    height: 10px;
     border-radius: 999px;
     background: rgba(255, 255, 255, 0.15);
     overflow: hidden;
@@ -114,13 +126,9 @@
     color: var(--up-navy);
     border: none;
     font-size: 22px;
-    cursor: pointer;
+    cursor: default;
     margin-bottom: 14px;
     transition: transform 0.2s var(--ease);
-}
-
-.play-icon:hover {
-    transform: scale(1.08);
 }
 
 .video-placeholder span {
@@ -141,8 +149,58 @@
 }
 
 .lesson-actions h2 {
-    font-size: 19px;
-    margin-bottom: 2px;
+    font-size: 22px;
+    margin: 2px 0 0;
+}
+
+.lesson-buttons {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.lesson-buttons .btn:disabled {
+    opacity: 0.4;
+    cursor: default;
+}
+
+.lesson-overview {
+    margin-top: 28px;
+    padding: 24px;
+    background: var(--white);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-lg);
+}
+
+.lesson-overview h3 {
+    font-size: 17px;
+    margin-bottom: 10px;
+}
+
+.lesson-overview h4 {
+    font-size: 14px;
+    margin: 18px 0 8px;
+}
+
+.lesson-overview p {
+    color: var(--ink-soft);
+    font-size: 14.5px;
+    line-height: 1.7;
+    margin: 0;
+}
+
+.overview-list {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--ink-soft);
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+.overview-instructor {
+    margin-top: 16px !important;
+    font-weight: 600;
+    color: var(--ink) !important;
 }
 
 .lesson-module {
@@ -157,8 +215,10 @@
     border-radius: var(--radius-lg);
     box-shadow: var(--shadow-sm);
     padding: 20px;
-    max-height: 620px;
+    max-height: calc(100vh - 120px);
     overflow-y: auto;
+    position: sticky;
+    top: 90px;
 }
 
 .player-sidebar h3 {
@@ -167,16 +227,56 @@
 }
 
 .nav-module {
-    margin-bottom: 12px;
+    border-bottom: 1px solid var(--line);
+}
+
+.nav-module:last-child {
+    border-bottom: none;
+}
+
+.nav-module-head {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 12px 4px;
+    text-align: left;
+    cursor: pointer;
+    font: inherit;
+    color: var(--ink);
 }
 
 .nav-module-title {
+    flex: 1;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.nav-module-count {
     font-family: var(--font-mono);
     font-size: 11px;
-    letter-spacing: 0.05em;
-    text-transform: uppercase;
-    color: var(--up-gold-dark);
-    margin-bottom: 6px;
+    color: var(--ink-soft);
+}
+
+.nav-module-chevron {
+    font-size: 16px;
+    color: var(--ink-soft);
+    transition: transform 0.2s var(--ease);
+}
+
+.nav-module.open .nav-module-chevron {
+    transform: rotate(180deg);
+}
+
+.nav-module-body {
+    display: none;
+    padding-bottom: 8px;
+}
+
+.nav-module.open .nav-module-body {
+    display: block;
 }
 
 .nav-lesson {
@@ -238,4 +338,46 @@
     .player-grid {
         grid-template-columns: 1fr;
     }
+
+    .player-sidebar {
+        position: static;
+        max-height: none;
+    }
+
+    .progress-track {
+        width: 160px;
+    }
+}
+
+.completed-banner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+    background: var(--gold-tint);
+    border: 1px solid var(--up-gold);
+    border-radius: var(--radius);
+    padding: 14px 18px;
+    margin-bottom: 20px;
+}
+
+.completed-banner[hidden] {
+    display: none;
+}
+
+.completed-banner span {
+    margin-left: 6px;
+    color: var(--ink-soft);
+    font-size: 13.5px;
+}
+
+.completed-actions {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+#mark-complete-btn[hidden] {
+    display: none;
 }
