@@ -151,42 +151,38 @@ function renderRelated(course, allCourses) {
 }
 
 function renderActions(course) {
-  const enrollBtn = document.getElementById("enroll-btn");
-  const cartBtn = document.getElementById("cart-btn");
-  if (!enrollBtn || !cartBtn) return;
+  const btn = document.getElementById("enroll-btn");
+  if (!btn) return;
+
+  const playerUrl = `course-player.html?id=${encodeURIComponent(course.id)}`;
+
+  function requireLogin() {
+    showToast("Please log in", "You need an account to continue.");
+    setTimeout(() => (window.location.href = "login.html"), 800);
+  }
 
   function paint() {
     if (isEnrolled(course.id)) {
-      enrollBtn.textContent = "Continue course →";
-      enrollBtn.onclick = () => (window.location.href = `course-player.html?id=${encodeURIComponent(course.id)}`);
-      cartBtn.style.display = "none";
-      return;
-    }
-
-    enrollBtn.textContent = course.price === 0 ? "Enroll now — Free" : "Enroll now";
-    enrollBtn.onclick = () => {
-      if (course.price === 0) {
+      btn.textContent = "Continue course →";
+      btn.onclick = () => (window.location.href = playerUrl);
+    } else if (course.price === 0) {
+      // Free courses skip the cart entirely
+      btn.textContent = "Enroll now — Free";
+      btn.onclick = () => {
+        if (!currentUserEmail()) return requireLogin();
         enrollCourse(course.id);
         showToast("You're enrolled!", `${course.title} is ready to start.`, "success");
-        setTimeout(() => (window.location.href = `course-player.html?id=${encodeURIComponent(course.id)}`), 650);
-      } else {
-        addToCart(course.id);
-        window.location.href = "checkout.html?buyNow=" + encodeURIComponent(course.id);
-      }
-    };
-
-    cartBtn.style.display = course.price === 0 ? "none" : "inline-flex";
-    if (isInCart(course.id)) {
-      cartBtn.textContent = "✓ In cart";
-      cartBtn.onclick = () => (window.location.href = "cart.html");
+        setTimeout(() => (window.location.href = playerUrl), 650);
+      };
+    } else if (isInCart(course.id)) {
+      btn.textContent = "Go to Cart →";
+      btn.onclick = () => (window.location.href = "cart.html");
     } else {
-      cartBtn.textContent = "Add to cart";
-      cartBtn.onclick = () => {
+      btn.textContent = "Add to Cart";
+      btn.onclick = () => {
+        if (!currentUserEmail()) return requireLogin();
         addToCart(course.id);
-        showToast("Added to cart", `${course.title} was added to your cart.`, "success");
-        const badge = document.getElementById("cart-badge");
-        if (badge) { badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump"); }
-        paint();
+        window.location.href = "cart.html";
       };
     }
   }

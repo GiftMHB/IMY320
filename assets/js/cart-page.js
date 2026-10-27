@@ -16,6 +16,13 @@ async function initCartPage() {
 }
 
 function render(allCourses) {
+  const raw = getCart();
+  const cleaned = raw.filter((id) => {
+    const c = allCourses.find((x) => x.id === id);
+    return c && c.price > 0 && !isEnrolled(id);
+  });
+  if (cleaned.length !== raw.length) saveCart(cleaned);
+  
   const cart = getCart();
   const items = cart
     .map((id) => allCourses.find((c) => c.id === id))

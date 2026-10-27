@@ -1,21 +1,34 @@
-/*
-  CodeCampus shared commerce + progress layer.
-  Everything here runs off localStorage, same pattern as auth.js.
-  Loaded on every page, before components.js.
-*/
+
 
 const CART_KEY = "codecampus_cart";
 const ENROLL_KEY = "codecampus_enrollments";
 const ORDERS_KEY = "codecampus_orders";
+const LAST_ORDER_KEY = "codecampus_last_order_id";
+
+/* ---------------- per-user keys ---------------- */
+
+
+function currentUserEmail() {
+  try {
+    const user = JSON.parse(localStorage.getItem("codecampus_current_user"));
+    return user && user.email ? user.email.trim().toLowerCase() : null;
+  } catch {
+    return null;
+  }
+}
+
+function userKey(base) {
+  return `${base}:${currentUserEmail() || "guest"}`;
+}
 
 /* ---------------- cart ---------------- */
 
 function getCart() {
-  return JSON.parse(localStorage.getItem(CART_KEY) || "[]");
+  return JSON.parse(localStorage.getItem(userKey(CART_KEY)) || "[]");
 }
 
 function saveCart(cart) {
-  localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  localStorage.setItem(userKey(CART_KEY), JSON.stringify(cart));
   updateCartBadge();
 }
 
@@ -46,11 +59,11 @@ function cartCount() {
 /* ---------------- enrollments / progress ---------------- */
 
 function getEnrollments() {
-  return JSON.parse(localStorage.getItem(ENROLL_KEY) || "{}");
+  return JSON.parse(localStorage.getItem(userKey(ENROLL_KEY)) || "{}");
 }
 
 function saveEnrollments(enrollments) {
-  localStorage.setItem(ENROLL_KEY, JSON.stringify(enrollments));
+  localStorage.setItem(userKey(ENROLL_KEY), JSON.stringify(enrollments));
 }
 
 function isEnrolled(courseId) {
@@ -65,6 +78,7 @@ function enrollCourse(courseId) {
       completedLessons: [],
       completed: false,
       completedAt: null,
+      review: null, // Person 3: { rating: 1-5, comment: "...", reviewedAt: Date.now() }
     };
     saveEnrollments(enrollments);
   }
@@ -105,15 +119,19 @@ function toggleLessonComplete(courseId, lessonKey, totalLessons) {
 /* ---------------- orders ---------------- */
 
 function getOrders() {
-  return JSON.parse(localStorage.getItem(ORDERS_KEY) || "[]");
+  return JSON.parse(localStorage.getItem(userKey(ORDERS_KEY)) || "[]");
 }
 
 function saveOrder(order) {
   const orders = getOrders();
   orders.push(order);
-  localStorage.setItem(ORDERS_KEY, JSON.stringify(orders));
-  localStorage.setItem("codecampus_last_order_id", order.id);
+  localStorage.setItem(userKey(ORDERS_KEY), JSON.stringify(orders));
+  localStorage.setItem(userKey(LAST_ORDER_KEY), order.id);
   return order;
+}
+
+function getLastOrderId() {
+  return localStorage.getItem(userKey(LAST_ORDER_KEY));
 }
 
 function getOrder(orderId) {

@@ -4,6 +4,9 @@
 
   const DATA_URL = "data/courses.json";
 
+  const CART_SVG = `<svg class="icon-cart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
+  const CHECK_SVG = `<svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>`;
+
   const CATEGORY_ACCENT = {
     "Python": "#2F5D9E",
     "C++": "#00549C",
@@ -211,6 +214,14 @@
     const initial = course.category ? course.category.trim().charAt(0) : "?";
     const priceLabel = course.price === 0 ? "Free" : "R " + course.price;
     const levelKey = course.level.toLowerCase();
+    const enrolled = typeof isEnrolled === "function" && isEnrolled(course.id);
+    const inCart = typeof isInCart === "function" && isInCart(course.id);
+    const quickAddHtml =
+      course.price > 0 && !enrolled
+        ? `<button class="quick-add-btn${inCart ? " added" : ""}" data-id="${course.id}" type="button"
+            aria-label="${inCart ? "In cart, view cart" : "Add to cart"}"
+            title="${inCart ? "In cart: view cart" : "Add to cart"}">${CART_SVG}${CHECK_SVG}</button>`
+        : "";
 
     return `
       <li class="course-row">
@@ -242,7 +253,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
           </span>
         </a>
-        <button class="quick-add-btn" data-id="${course.id}" type="button" aria-label="Quick add to cart">+</button>
+          ${quickAddHtml}
       </li>
     `;
   }
