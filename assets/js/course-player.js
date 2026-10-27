@@ -2,6 +2,8 @@ let playerCourse = null;
 let playerModules = [];
 let playerLessons = []; // flat list: { key, title, duration, moduleTitle }
 let currentLessonIndex = 0;
+let openModules = new Set();
+let courseIsCompleted = false;
 
 async function loadJSONp(path) {
   const res = await fetch(path);
@@ -56,9 +58,51 @@ async function initPlayer() {
     });
   });
 
+  renderOverview(details);
+
+  const record = getProgress(playerCourse.id);
+  courseIsCompleted = Boolean(record && record.completed);
+  if (courseIsCompleted) setupCompletedBanner(record);
+
+  // resume at the first lesson that is not done yet
+  const progress = getProgress(playerCourse.id);
+  const doneKeys = (progress && progress.completedLessons) || [];
+  const firstTodo = playerLessons.findIndex((l) => !doneKeys.includes(l.key));
+  currentLessonIndex = firstTodo === -1 ? 0 : firstTodo;
+  openModules.add(Number(playerLessons[currentLessonIndex].key.split("-")[0]));
+
   renderCurriculumNav();
-  selectLesson(0);
+  selectLesson(currentLessonIndex);
   document.getElementById("mark-complete-btn").addEventListener("click", markCurrentLessonComplete);
+  document.getElementById("prev-lesson-btn").addEventListener("click", () => selectLesson(currentLessonIndex - 1));
+  document.getElementById("next-lesson-btn").addEventListener("click", () => selectLesson(currentLessonIndex + 1));
+}
+
+function setupCompletedBanner(record) {
+  document.getElementById("completed-banner").hidden = false;
+  document.getElementById("mark-complete-btn").hidden = true;
+  if (record.completedAt) {
+    document.getElementById("completed-date").textContent =
+      "on " + new Date(record.completedAt).toLocaleDateString("en-ZA", { year: "numeric", month: "long", day: "numeric" });
+  }
+  document.getElementById("banner-certificate").href = `course-complete.html?id=${encodeURIComponent(playerCourse.id)}`;
+
+  const reviewBtn = document.getElementById("banner-review");
+  const label = () => {
+    reviewBtn.textContent = getReview(playerCourse.id) ? "Edit Your Review" : "Add Your Review";
+  };
+  label();
+  reviewBtn.addEventListener("click", () => openReviewModal(playerCourse.id, label));
+}
+
+function renderOverview(details) {
+  document.getElementById("overview-text").textContent = details.longDescription || playerCourse.description || "";
+  document.getElementById("overview-learn").innerHTML = (details.learnPoints || [])
+    .map((p) => `<li>${p}</li>`)
+    .join("");
+  document.getElementById("overview-instructor").textContent = playerCourse.instructor
+    ? `Instructor: ${playerCourse.instructor}`
+    : "";
 }
 
 function renderCurriculumNav() {
@@ -68,7 +112,10 @@ function renderCurriculumNav() {
 
   container.innerHTML = playerModules
     .map((mod, mi) => {
-      const lessonsHtml = (mod.lessons || [])
+      const lessons = mod.lessons || [];
+      const doneInModule = lessons.filter((_, li) => done.has(`${mi}-${li}`)).length;
+      const isOpen = openModules.has(mi);
+      const lessonsHtml = lessons
         .map((lesson, li) => {
           const key = `${mi}-${li}`;
           const flatIndex = playerLessons.findIndex((l) => l.key === key);
@@ -83,13 +130,27 @@ function renderCurriculumNav() {
         })
         .join("");
       return `
-        <div class="nav-module">
-          <div class="nav-module-title">${mod.title}</div>
-          ${lessonsHtml}
+        <div class="nav-module ${isOpen ? "open" : ""}">
+          <button class="nav-module-head" type="button" data-module="${mi}" aria-expanded="${isOpen}">
+            <span class="nav-module-title">${mod.title}</span>
+            <span class="nav-module-count">${doneInModule}/${lessons.length}</span>
+            <span class="nav-module-chevron" aria-hidden="true">⌄</span>
+          </button>
+          <div class="nav-module-body">${lessonsHtml}</div>
         </div>
       `;
     })
     .join("");
+
+  container.querySelectorAll(".nav-module-head").forEach((head) => {
+    head.addEventListener("click", () => {
+      const mi = Number(head.dataset.module);
+      if (openModules.has(mi)) openModules.delete(mi);
+      else openModules.add(mi);
+      head.parentElement.classList.toggle("open", openModules.has(mi));
+      head.setAttribute("aria-expanded", openModules.has(mi));
+    });
+  });
 
   container.querySelectorAll(".nav-lesson").forEach((btn) => {
     btn.addEventListener("click", () => selectLesson(Number(btn.dataset.index)));
@@ -106,6 +167,18 @@ function selectLesson(index) {
   document.getElementById("now-playing-title").textContent = lesson.title;
   document.getElementById("lesson-heading").textContent = lesson.title;
   document.getElementById("lesson-module-label").textContent = `${lesson.moduleTitle} · ${lesson.duration}`;
+
+  const moduleIndex = Number(lesson.key.split("-")[0]);
+  if (!openModules.has(moduleIndex)) {
+    openModules.add(moduleIndex);
+    const mod = document.querySelectorAll(".nav-module")[moduleIndex];
+    if (mod) {
+      mod.classList.add("open");
+      mod.querySelector(".nav-module-head").setAttribute("aria-expanded", "true");
+    }
+  }
+  document.getElementById("prev-lesson-btn").disabled = index === 0;
+  document.getElementById("next-lesson-btn").disabled = index === playerLessons.length - 1;
 
   document.querySelectorAll(".nav-lesson").forEach((btn) => {
     btn.classList.toggle("active", Number(btn.dataset.index) === index);
@@ -125,8 +198,11 @@ function updateProgressBar() {
   const total = playerLessons.length;
   const pct = total ? Math.round((doneCount / total) * 100) : 0;
 
-  document.getElementById("progress-label").textContent = `${doneCount} of ${total} lessons complete`;
+  document.getElementById("progress-label").textContent =
+    pct === 100 ? "Course complete" : `${doneCount} of ${total} lessons complete`;
+  document.getElementById("progress-percent").textContent = `${pct}%`;
   document.getElementById("progress-fill").style.width = `${pct}%`;
+  document.getElementById("progress-track").setAttribute("aria-valuenow", pct);
 }
 
 function markCurrentLessonComplete() {

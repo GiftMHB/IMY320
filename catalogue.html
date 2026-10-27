@@ -56,9 +56,11 @@
           </label>
           <label class="visually-hidden" for="sort-select">Sort courses</label>
           <select id="sort-select" class="filter-select sort-select" aria-label="Sort courses">
-            <option value="default">Sort: Default order</option>
-            <option value="price-asc">Price: Low to high</option>
-            <option value="price-desc">Price: High to low</option>
+            <option value="default">Sort by: Default order</option>
+            <option value="price-asc">Sort by: Price, low to high</option>
+            <option value="price-desc">Sort by: Price, high to low</option>
+            <option value="duration-asc">Sort by: Shortest first</option>
+            <option value="title-asc">Sort by: Title A–Z</option>
           </select>
         </div>
       </div>
@@ -66,7 +68,10 @@
 
     <section class="course-list-section">
       <div class="wrap">
-        <p class="results-meta" id="results-meta" aria-live="polite"></p>
+        <div class="results-row">
+          <p class="results-meta" id="results-meta" aria-live="polite"></p>
+          <button class="clear-filters" id="clear-filters" type="button" hidden>Clear filters</button>
+        </div>
 
         <ul class="course-list" id="course-list" aria-live="polite"></ul>
 

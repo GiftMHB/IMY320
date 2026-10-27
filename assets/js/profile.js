@@ -31,6 +31,8 @@ async function initProfile() {
 
   renderProgressGrid("in-progress-grid", inProgressIds, allCourses, enrollments, false);
   renderProgressGrid("completed-grid", completedIds, allCourses, enrollments, true);
+  document.getElementById("completed-count").textContent = completedIds.length ? completedIds.length : "";
+  document.getElementById("completed-empty").hidden = completedIds.length > 0;
   renderOrderHistory(orders);
 }
 
@@ -54,6 +56,11 @@ function renderProgressGrid(containerId, ids, allCourses, enrollments, isComplet
       const total = Math.max(doneCount, isCompleted ? doneCount : doneCount + 1);
       const pct = isCompleted ? 100 : total ? Math.round((doneCount / total) * 100) : 0;
 
+      const review = isCompleted ? getReview(c.id) : null;
+      const reviewHtml = review
+        ? `<div class="p-review" aria-label="Your rating: ${review.rating} out of 5">${"★".repeat(review.rating)}${"☆".repeat(5 - review.rating)} <span>Your review</span></div>`
+        : "";
+
       return `
       <div class="p-card">
         <div class="p-card-thumb" style="background-image:url('${c.image}')">
@@ -62,10 +69,12 @@ function renderProgressGrid(containerId, ids, allCourses, enrollments, isComplet
         <div class="p-card-body">
           <h3>${c.title}</h3>
           <div class="p-progress-track"><div class="p-progress-fill" style="width:${pct}%"></div></div>
-          <div class="p-progress-label">${isCompleted ? "Completed" : `${doneCount} lesson${doneCount === 1 ? "" : "s"} done`}</div>
+          <div class="p-progress-label">${isCompleted ? "Completed" + (record.completedAt ? " · " + new Date(record.completedAt).toLocaleDateString("en-ZA", { year: "numeric", month: "short", day: "numeric" }) : "") : `${doneCount} lesson${doneCount === 1 ? "" : "s"} done`}</div>
+          ${reviewHtml}
           <div class="p-card-actions">
             ${isCompleted
-                ? `<a class="btn btn-ghost" href="course-complete.html?id=${encodeURIComponent(c.id)}">View certificate</a>
+                ? `<a class="btn btn-ghost" href="course-player.html?id=${encodeURIComponent(c.id)}">Revisit</a>
+                   <a class="btn btn-ghost" href="course-complete.html?id=${encodeURIComponent(c.id)}">Certificate</a>
                    <button class="btn btn-primary" data-download="${c.id}" type="button">Download</button>`
                 : `<a class="btn btn-primary" href="course-player.html?id=${encodeURIComponent(c.id)}">Continue</a>`
               }

@@ -57,6 +57,15 @@ async function initCourseComplete() {
     downloadCertificate(completedCourse, completedAt);
   });
 
+  const reviewBtn = document.getElementById("review-btn");
+  function updateReviewBtn() {
+    reviewBtn.textContent = getReview(completedCourse.id) ? "Edit Your Review" : "Add Your Review";
+  }
+  updateReviewBtn();
+  reviewBtn.addEventListener("click", () => {
+    openReviewModal(completedCourse.id, updateReviewBtn);
+  });
+
   launchConfetti(document.getElementById("confetti-canvas"));
 }
 
