@@ -140,7 +140,7 @@ function initAuthPage() {
       }
       localStorage.setItem(SESSION_KEY, JSON.stringify({ name: user.name, email: user.email }));
       showToast("Welcome back", `Signed in as ${user.name}.`, "success");
-      setTimeout(() => (window.location.href = "index.html"), 700);
+      setTimeout(() => (window.location.href = "catalogue.html"), 700);
     });
   });
 
@@ -174,7 +174,7 @@ function initAuthPage() {
       saveUsers(users);
       localStorage.setItem(SESSION_KEY, JSON.stringify({ name, email }));
       showToast("Account created", `Welcome to CodeCampus, ${name}.`, "success");
-      setTimeout(() => (window.location.href = "index.html"), 700);
+      setTimeout(() => (window.location.href = "catalogue.html"), 700);
     });
   });
 }
