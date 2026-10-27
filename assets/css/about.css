@@ -1,7 +1,15 @@
+/* ---------- spacing variables ---------- */
+:root {
+   --about-section-gap: 96px;
+   --about-block-gap: 48px;
+}
+
+/* ---------- hero ---------- */
 .about-hero {
    min-height: 65vh;
    display: flex;
    align-items: center;
+   padding: 112px 0 120px;
    background-image: linear-gradient(rgba(4, 30, 66, 0.68), rgba(4, 30, 66, 0.88)), url('../img/aboutImg.jpg');
    background-size: cover;
    background-position: center;
@@ -11,6 +19,24 @@
 
 .about-hero .wrap {
    width: 100%;
+   max-width: 920px;
+}
+
+.about-hero .hero-eyebrow {
+   margin-bottom: 28px;
+}
+
+.about-hero h1 {
+   max-width: 17ch;
+   margin-bottom: 36px;
+   font-size: clamp(36px, 5vw, 56px);
+   line-height: 1.12;
+}
+
+.about-hero .lede {
+   max-width: 64ch;
+   margin: 0;
+   line-height: 1.8;
 }
 
 .about-hero h1,
@@ -19,26 +45,227 @@
    color: var(--white);
 }
 
-.lang-list {
-   font-family: var(--font-mono);
-   font-size: 13px;
-   letter-spacing: 0.02em;
-   color: rgba(255, 255, 255, 0.7);
-   text-align: center;
-   margin: 24px 0 0;
+/* ---------- stats strip: light band, cards styled like "Our approach" ---------- */
+.about-hero + .stats-strip {
+   padding: 96px 0 104px;
+   background: var(--navy-tint, #f3f6fb);
+   border: 0;
+   color: var(--up-navy);
 }
 
+.stats-strip .wrap {
+   max-width: 1120px;
+}
+
+.about-hero + .stats-strip .stats-grid {
+   display: grid;
+   grid-template-columns: repeat(4, minmax(0, 1fr));
+   gap: 32px;
+   align-items: stretch;
+}
+
+.about-hero + .stats-strip .stats-grid .stat {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+   gap: 12px;
+   min-height: 0;
+   height: auto;
+   padding: 32px 24px;
+   text-align: center;
+   background: var(--white);
+   border: 1px solid var(--line);
+   border-radius: var(--radius);
+   box-shadow: none;
+   transform: none;
+   transition: none;
+}
+
+/* no hover effect on these cards */
+.about-hero + .stats-strip .stats-grid .stat:hover {
+   transform: none;
+   box-shadow: none;
+   border-color: var(--line);
+}
+
+.about-hero + .stats-strip .stat-num {
+   margin: 0;
+   color: var(--up-navy);
+   font-size: clamp(34px, 4vw, 48px);
+   line-height: 1.1;
+}
+
+/* small gold bar under each number */
+.about-hero + .stats-strip .stat-num::after {
+   content: "";
+   display: block;
+   width: 32px;
+   height: 3px;
+   margin: 14px auto 0;
+   background: var(--up-gold);
+}
+
+.about-hero + .stats-strip .stat-label {
+   margin: 0;
+   color: var(--ink-soft, #5b6472);
+   line-height: 1.5;
+}
+
+/* ---------- language pills ---------- */
+.lang-block {
+   margin-top: 80px;
+}
+
+/* the title uses the shared .tick-rule style; just set its spacing */
+.lang-block .tick-rule {
+   margin-bottom: 32px;
+}
+
+.lang-chips {
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: center;
+   gap: 12px;
+   margin: 0;
+   padding: 0;
+   list-style: none;
+}
+
+.lang-chips li {
+   padding: 10px 20px;
+   font-family: var(--font-mono);
+   font-size: 14px;
+   color: var(--up-navy);
+   background: var(--white);
+   border: 1px solid var(--line);
+   border-radius: 999px;
+}
+
+/* ---------- sections after the stats strip ---------- */
+.about-hero ~ section:not(.stats-strip) {
+   padding-top: var(--about-section-gap);
+   padding-bottom: var(--about-section-gap);
+}
+
+.about-hero ~ section:not(.stats-strip) .tick-rule {
+   margin-bottom: var(--about-block-gap);
+}
+
+/* "Our approach" cards */
+.about-hero ~ section .grid-3 {
+   gap: 32px;
+}
+
+.about-hero ~ section .grid-3 .card {
+   padding: 32px 28px;
+}
+
+/* ---------- team ---------- */
+.team-grid {
+   display: grid;
+   grid-template-columns: repeat(4, minmax(0, 1fr));
+   align-items: start;
+   gap: 32px;
+}
+
+.team-card {
+   min-width: 0;
+   padding: 16px 16px 28px;
+   background: var(--white);
+   border: 1px solid var(--line);
+   border-radius: var(--radius);
+   box-shadow: 0 8px 24px rgba(4, 30, 66, 0.05);
+}
+
+.team-portrait {
+   display: block;
+   width: 100%;
+   aspect-ratio: 4 / 4.5;
+   object-fit: cover;
+   object-position: center 35%;
+   margin: 0 auto 18px;
+   background: var(--navy-tint);
+   border-radius: calc(var(--radius) - 4px);
+}
+
+.team-card h3 {
+   min-height: 2.3em;
+   margin-bottom: 6px;
+}
+
+.team-card h4 {
+   margin: 0 0 8px;
+}
+
+.team-card p {
+   min-height: 3em;
+   line-height: 1.6;
+}
+
+/* ---------- tablet ---------- */
 @media (max-width: 900px) {
-   .stats-grid {
-      grid-template-columns: repeat(2, 1fr);
-      row-gap: 28px;
+   .team-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
    }
 
-   .stats-grid .stat:nth-child(3) {
-      border-left: 1px solid rgba(255, 255, 255, 0.14);
+   .about-hero + .stats-strip .stats-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+   }
+}
+
+/* ---------- mobile ---------- */
+@media (max-width: 600px) {
+   :root {
+      --about-section-gap: 56px;
+      --about-block-gap: 32px;
    }
 
-   .stats-grid .stat:nth-child(2n+1) {
-      border-left: none;
+   .about-hero {
+      min-height: 0;
+      padding: 80px 0 88px;
+   }
+
+   .about-hero h1 {
+      font-size: clamp(34px, 10vw, 44px);
+   }
+
+   .about-hero + .stats-strip {
+      padding: 56px 0 64px;
+   }
+
+   .about-hero + .stats-strip .stats-grid {
+      gap: 16px;
+   }
+
+   .about-hero + .stats-strip .stats-grid .stat {
+      padding: 24px 12px;
+   }
+
+   .lang-block {
+      margin-top: 56px;
+   }
+
+   .team-grid {
+      gap: 16px;
+   }
+
+   .team-card {
+      padding: 10px 10px 16px;
+   }
+
+   .team-portrait {
+      margin-bottom: 14px;
+   }
+
+   .team-card h3 {
+      font-size: 13px;
+      min-height: 2.4em;
+   }
+
+   .team-card p {
+      font-size: 11px;
    }
 }

@@ -36,11 +36,6 @@
     transition: transform 0.2s var(--ease), box-shadow 0.2s var(--ease);
 }
 
-.p-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow-lg);
-}
-
 .p-card-thumb {
     height: 100px;
     background-size: cover;
@@ -146,4 +141,29 @@
 .empty-state p {
     color: var(--ink-soft);
     margin-bottom: 22px;
+}
+
+.count-pill {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--up-gold-dark);
+    margin-left: 6px;
+}
+
+.empty-note {
+    color: var(--ink-soft);
+    font-size: 14px;
+    margin: 0;
+}
+
+.p-review {
+    color: var(--up-gold);
+    font-size: 15px;
+    margin: 6px 0 10px;
+}
+
+.p-review span {
+    color: var(--ink-soft);
+    font-size: 12px;
+    margin-left: 4px;
 }

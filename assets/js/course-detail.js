@@ -42,7 +42,7 @@ function renderHero(course, details) {
     <span class="meta-item">⏱ ${course.durationHours}h length</span>
     <span class="meta-item">👤 ${course.instructor}</span>
     <span class="meta-item">${(details.studentsCount || 0).toLocaleString()} students</span>
-    <span class="meta-item"><span class="stars">${stars(details.rating || 0)}</span> ${details.rating || "—"} (${details.reviewsCount || 0} reviews)</span>
+    <a class="meta-item rating-link" href="#reviews"><span class="stars">${stars(details.rating || 0)}</span> ${details.rating || "—"} (${details.reviewsCount || 0} reviews)</a>
   `;
 
   const thumb = document.getElementById("sidebar-thumb");
@@ -92,15 +92,30 @@ function renderRequirements(details) {
   list.innerHTML = (details.requirements || []).map(r => `<li>${r}</li>`).join("");
 }
 
+const INSTRUCTOR_PHOTOS = {
+  "Amara Okafor": "women/44",
+  "Chloe Fourie": "women/68",
+  "Dylan Botha": "men/32",
+  "Kagiso Mahlangu": "men/75",
+  "Nomvula Khumalo": "women/65",
+  "Priya Naidoo": "women/12",
+  "Reece van der Merwe": "men/46",
+  "Sipho Ndlovu": "men/22",
+};
+
 function renderInstructor(course, details) {
   const inst = details.instructor || {};
+  const photo = INSTRUCTOR_PHOTOS[course.instructor];
+  const avatar = photo
+    ? `<img class="avatar avatar-photo" src="https://randomuser.me/api/portraits/${photo}.jpg" alt="${course.instructor}" onerror="this.outerHTML='<div class=\\'avatar\\'>${initials(course.instructor)}</div>'">`
+    : `<div class="avatar">${initials(course.instructor)}</div>`;
   document.getElementById("instructor-card").innerHTML = `
-    <div class="avatar">${initials(course.instructor)}</div>
+    ${avatar}
     <div>
       <h3>${course.instructor}</h3>
       <div class="instructor-role">Instructor</div>
       <div class="instructor-stats">
-        <span>★ ${inst.rating || "—"} Rating</span>
+        <span><span class="stars">${stars(inst.rating || 0)}</span> ${inst.rating || "—"} Rating</span>
         <span>${(inst.studentsCount || 0).toLocaleString()} Students</span>
         <span>${inst.coursesCount || 0} Courses</span>
       </div>
@@ -109,9 +124,19 @@ function renderInstructor(course, details) {
   `;
 }
 
-function renderReviews(details) {
+function renderReviews(course, details) {
   const grid = document.getElementById("reviews-grid");
-  grid.innerHTML = (details.reviews || []).map(r => `
+  const mine = typeof getReview === "function" ? getReview(course.id) : null;
+  const mineHtml = mine ? `
+    <div class="testi-card">
+      <div class="stars" style="margin-bottom:10px;">${stars(mine.rating)}</div>
+      <blockquote>${mine.comment ? `"${mine.comment}"` : "No comment left."}</blockquote>
+      <div class="testi-who">
+        <div class="testi-avatar">You</div>
+        <div><div class="name">Your review</div></div>
+      </div>
+    </div>` : "";
+  grid.innerHTML = mineHtml + (details.reviews || []).map(r => `
     <div class="testi-card">
       <div class="stars" style="margin-bottom:10px;">${stars(r.rating)}</div>
       <blockquote>"${r.quote}"</blockquote>
@@ -123,6 +148,30 @@ function renderReviews(details) {
       </div>
     </div>
   `).join("");
+}
+
+function setupReviewCarousel() {
+  const track = document.getElementById("reviews-grid");
+  const prev = document.getElementById("rev-prev");
+  const next = document.getElementById("rev-next");
+  if (!track || !prev || !next) return;
+
+  function update() {
+    const overflow = track.scrollWidth > track.clientWidth + 1;
+    prev.hidden = next.hidden = !overflow;
+    prev.disabled = track.scrollLeft <= 1;
+    next.disabled = track.scrollLeft + track.clientWidth >= track.scrollWidth - 1;
+  }
+  function page(dir) {
+    const card = track.querySelector(".testi-card");
+    const step = card ? card.offsetWidth + 20 : track.clientWidth;
+    track.scrollBy({ left: dir * step, behavior: "smooth" });
+  }
+  prev.addEventListener("click", () => page(-1));
+  next.addEventListener("click", () => page(1));
+  track.addEventListener("scroll", update);
+  window.addEventListener("resize", update);
+  update();
 }
 
 function renderRelated(course, allCourses) {
@@ -151,42 +200,38 @@ function renderRelated(course, allCourses) {
 }
 
 function renderActions(course) {
-  const enrollBtn = document.getElementById("enroll-btn");
-  const cartBtn = document.getElementById("cart-btn");
-  if (!enrollBtn || !cartBtn) return;
+  const btn = document.getElementById("enroll-btn");
+  if (!btn) return;
+
+  const playerUrl = `course-player.html?id=${encodeURIComponent(course.id)}`;
+
+  function requireLogin() {
+    showToast("Please log in", "You need an account to continue.");
+    setTimeout(() => (window.location.href = "login.html"), 800);
+  }
 
   function paint() {
     if (isEnrolled(course.id)) {
-      enrollBtn.textContent = "Continue course →";
-      enrollBtn.onclick = () => (window.location.href = `course-player.html?id=${encodeURIComponent(course.id)}`);
-      cartBtn.style.display = "none";
-      return;
-    }
-
-    enrollBtn.textContent = course.price === 0 ? "Enroll now — Free" : "Enroll now";
-    enrollBtn.onclick = () => {
-      if (course.price === 0) {
+      btn.textContent = "Continue course →";
+      btn.onclick = () => (window.location.href = playerUrl);
+    } else if (course.price === 0) {
+      // Free courses skip the cart entirely
+      btn.textContent = "Enroll now — Free";
+      btn.onclick = () => {
+        if (!currentUserEmail()) return requireLogin();
         enrollCourse(course.id);
         showToast("You're enrolled!", `${course.title} is ready to start.`, "success");
-        setTimeout(() => (window.location.href = `course-player.html?id=${encodeURIComponent(course.id)}`), 650);
-      } else {
-        addToCart(course.id);
-        window.location.href = "checkout.html?buyNow=" + encodeURIComponent(course.id);
-      }
-    };
-
-    cartBtn.style.display = course.price === 0 ? "none" : "inline-flex";
-    if (isInCart(course.id)) {
-      cartBtn.textContent = "✓ In cart";
-      cartBtn.onclick = () => (window.location.href = "cart.html");
+        setTimeout(() => (window.location.href = playerUrl), 650);
+      };
+    } else if (isInCart(course.id)) {
+      btn.textContent = "Go to Cart →";
+      btn.onclick = () => (window.location.href = "cart.html");
     } else {
-      cartBtn.textContent = "Add to cart";
-      cartBtn.onclick = () => {
+      btn.textContent = "Add to Cart";
+      btn.onclick = () => {
+        if (!currentUserEmail()) return requireLogin();
         addToCart(course.id);
-        showToast("Added to cart", `${course.title} was added to your cart.`, "success");
-        const badge = document.getElementById("cart-badge");
-        if (badge) { badge.classList.remove("bump"); void badge.offsetWidth; badge.classList.add("bump"); }
-        paint();
+        window.location.href = "cart.html";
       };
     }
   }
@@ -226,7 +271,8 @@ async function init() {
   renderCurriculum(details);
   renderRequirements(details);
   renderInstructor(course, details);
-  renderReviews(details);
+  renderReviews(course, details);
+  setupReviewCarousel();
   renderRelated(course, allCourses);
   renderActions(course);
 }

@@ -7,6 +7,9 @@
   <title>CodeCampus</title>
   <meta name="description"
     content="CodeCampus is a course platform for hands-on technical skills: code, robotics, and game dev, taught by building real projects." />
+  <script>
+    if (localStorage.getItem("codecampus_current_user")) window.location.replace("catalogue.html");
+  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
@@ -116,9 +119,11 @@
             <h2>Featured courses</h2>
             <p>Rand pricing, shown upfront. No surprise checkout. Free courses are a great place to start.</p>
           </div>
-          <a class="btn btn-ghost" href="catalogue.html">View full catalogue</a>
         </div>
-        <div class="course-grid reveal-group" id="course-grid">
+        <div class="featured-course-list reveal-group" id="course-grid">
+        </div>
+        <div class="featured-catalogue-link">
+          <a class="btn btn-ghost" href="catalogue.html">View full catalogue <span aria-hidden="true">→</span></a>
         </div>
       </div>
     </section>

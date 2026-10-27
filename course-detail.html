@@ -30,22 +30,29 @@
             <h1 id="course-title">Loading course…</h1>
             <p class="lede" id="course-summary"></p>
             <div class="meta-row" id="meta-row"></div>
+
+            <div class="hero-about">
+              <h2>Prerequisites</h2>
+              <ul class="req-list" id="requirements-list"></ul>
+            </div>
+
+            <div class="hero-about">
+              <h2>What you'll learn</h2>
+              <ul class="check-grid hero-learn" id="learn-list"></ul>
+            </div>
           </div>
 
           <aside class="detail-sidebar" id="detail-sidebar">
-            <div class="sidebar-thumb" id="sidebar-thumb">
-              <button class="play-btn" type="button" aria-label="Preview course">▶</button>
-            </div>
+            <div class="sidebar-thumb" id="sidebar-thumb"></div>
             <div class="sidebar-body">
               <div class="sidebar-price" id="sidebar-price"></div>
-              <button class="btn btn-primary btn-block">Enroll now</button>
-              <button class="btn btn-ghost btn-block">Preview course</button>
+              <button class="btn btn-primary btn-block" id="enroll-btn" type="button">Add to Cart</button>
               <ul class="sidebar-features">
-                <li>∞ Lifetime access</li>
-                <li>🎓 Certificate on completion</li>
-                <li>📱 Access on mobile and TV</li>
+                <li>Lifetime access</li>
+                <li>Certificate on completion</li>
+                <li>Access on mobile and TV</li>
               </ul>
-            </div>
+                    </div>
           </aside>
         </div>
       </div>
@@ -61,8 +68,8 @@
 
     <section class="content-block">
       <div class="wrap">
-        <h2>What you'll learn</h2>
-        <ul class="check-grid" id="learn-list"></ul>
+        <h2>Instructor</h2>
+        <div class="instructor-card" id="instructor-card"></div>
       </div>
     </section>
 
@@ -73,24 +80,14 @@
       </div>
     </section>
 
-    <section class="content-block">
-      <div class="wrap">
-        <h2>Requirements</h2>
-        <ul class="req-list" id="requirements-list"></ul>
-      </div>
-    </section>
-
-    <section class="content-block">
-      <div class="wrap">
-        <h2>Instructor</h2>
-        <div class="instructor-card" id="instructor-card"></div>
-      </div>
-    </section>
-
-    <section class="content-block section-alt">
+    <section class="content-block section-alt" id="reviews">
       <div class="wrap">
         <h2>Student Reviews</h2>
-        <div class="testi-grid" id="reviews-grid"></div>
+        <div class="review-carousel">
+          <button class="car-btn" id="rev-prev" type="button" aria-label="Previous reviews" hidden>‹</button>
+          <div class="review-track" id="reviews-grid"></div>
+          <button class="car-btn" id="rev-next" type="button" aria-label="Next reviews" hidden>›</button>
+        </div>
       </div>
     </section>
 
@@ -108,6 +105,8 @@
   </main>
 
   <footer class="site-footer" id="site-footer"></footer>
+  <script src="assets/js/cart.js"></script>
+  <script src="assets/js/reviews.js"></script>
   <script src="assets/js/components.js"></script>
   <script src="assets/js/course-detail.js"></script>
 </body>

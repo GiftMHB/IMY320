@@ -30,6 +30,63 @@ function fieldError(fieldEl, message) {
 function validEmail(v) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 }
+/* ---------- password rules ---------- */
+const PASSWORD_RULES = [
+  { id: "length", label: "At least 8 characters", test: v => v.length >= 8 },
+  { id: "upper",  label: "One uppercase letter",  test: v => /[A-Z]/.test(v) },
+  { id: "lower",  label: "One lowercase letter",  test: v => /[a-z]/.test(v) },
+  { id: "number", label: "One number",            test: v => /\d/.test(v) },
+];
+
+function passwordMeetsRules(value) {
+  return PASSWORD_RULES.every(r => r.test(value));
+}
+
+// Builds the checklist and ticks items off live as the user types
+function setupPasswordRules(input, listEl) {
+  if (!input || !listEl) return;
+  listEl.innerHTML = PASSWORD_RULES
+    .map(r => `<li data-rule="${r.id}">${r.label}</li>`)
+    .join("");
+  const update = () => {
+    PASSWORD_RULES.forEach(r => {
+      listEl.querySelector(`[data-rule="${r.id}"]`)
+        .classList.toggle("met", r.test(input.value));
+    });
+  };
+  input.addEventListener("input", update);
+  update();
+}
+
+/* ---------- show / hide password ---------- */
+const EYE_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
+const EYE_OFF_ICON = `<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>`;
+
+function addPasswordToggles() {
+  document.querySelectorAll('input[type="password"]').forEach(input => {
+    const wrap = document.createElement("div");
+    wrap.className = "password-wrap";
+    input.parentNode.insertBefore(wrap, input);
+    wrap.appendChild(input);
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+    btn.className = "password-toggle";
+    btn.setAttribute("aria-label", "Show password");
+    btn.setAttribute("aria-pressed", "false");
+    btn.innerHTML = EYE_ICON;
+
+    btn.addEventListener("click", () => {
+      const show = input.type === "password";
+      input.type = show ? "text" : "password";
+      btn.innerHTML = show ? EYE_OFF_ICON : EYE_ICON;
+      btn.setAttribute("aria-label", show ? "Hide password" : "Show password");
+      btn.setAttribute("aria-pressed", String(show));
+    });
+
+    wrap.appendChild(btn);
+  });
+}
 
 function withLoading(button, doWork) {
   const original = button.textContent;
@@ -43,6 +100,12 @@ function withLoading(button, doWork) {
 }
 
 function initAuthPage() {
+  addPasswordToggles();
+  setupPasswordRules(
+    document.getElementById("reg-password"),
+    document.getElementById("pw-rules")
+  );
+
   const params = new URLSearchParams(window.location.search);
   setTab(params.get("tab") === "register" ? "register" : "login");
 
@@ -77,7 +140,7 @@ function initAuthPage() {
       }
       localStorage.setItem(SESSION_KEY, JSON.stringify({ name: user.name, email: user.email }));
       showToast("Welcome back", `Signed in as ${user.name}.`, "success");
-      setTimeout(() => (window.location.href = "index.html"), 700);
+      setTimeout(() => (window.location.href = "catalogue.html"), 700);
     });
   });
 
@@ -96,7 +159,7 @@ function initAuthPage() {
     let hasError = false;
     if (name.length < 2) { fieldError(nameField, "Enter your full name."); hasError = true; }
     if (!validEmail(email)) { fieldError(emailField, "Enter a valid email address."); hasError = true; }
-    if (password.length < 8) { fieldError(passField, "Use at least 8 characters."); hasError = true; }
+    if (!passwordMeetsRules(password)) { fieldError(passField, "Password doesn't meet all the requirements."); hasError = true; }
     if (hasError) return;
 
     const btn = registerForm.querySelector("button[type=submit]");
@@ -111,7 +174,7 @@ function initAuthPage() {
       saveUsers(users);
       localStorage.setItem(SESSION_KEY, JSON.stringify({ name, email }));
       showToast("Account created", `Welcome to CodeCampus, ${name}.`, "success");
-      setTimeout(() => (window.location.href = "index.html"), 700);
+      setTimeout(() => (window.location.href = "catalogue.html"), 700);
     });
   });
 }

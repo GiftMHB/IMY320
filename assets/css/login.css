@@ -57,8 +57,63 @@
     url("../images/auth-register.jpg");
 }
 
-.social-row .btn i {
-  font-size: 16px;
+/* show / hide password toggle */
+.password-wrap {
+  position: relative;
+}
+
+.password-wrap input {
+  width: 100%;
+  padding-right: 44px;
+}
+
+.password-toggle {
+  position: absolute;
+  top: 50%;
+  right: 6px;
+  transform: translateY(-50%);
+  display: flex;
+  padding: 6px;
+  background: none;
+  border: 0;
+  border-radius: 6px;
+  color: var(--ink-soft, #5b6472);
+  cursor: pointer;
+  line-height: 0;
+}
+
+.password-toggle:hover {
+  color: var(--up-navy);
+}
+
+.password-toggle:focus-visible {
+  outline: 2px solid var(--up-gold);
+  outline-offset: 2px;
+}
+
+/* live password checklist */
+.pw-rules {
+  list-style: none;
+  margin: 8px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 4px;
+  font-size: 13px;
+  color: var(--ink-soft, #5b6472);
+}
+
+.pw-rules li::before {
+  content: "○";
+  display: inline-block;
+  width: 1.4em;
+}
+
+.pw-rules li.met {
+  color: #1a7f4b;
+}
+
+.pw-rules li.met::before {
+  content: "✓";
 }
 
 .auth-meta {

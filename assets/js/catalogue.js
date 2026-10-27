@@ -4,6 +4,9 @@
 
   const DATA_URL = "data/courses.json";
 
+  const CART_SVG = `<svg class="icon-cart" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>`;
+  const CHECK_SVG = `<svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg>`;
+
   const CATEGORY_ACCENT = {
     "Python": "#2F5D9E",
     "C++": "#00549C",
@@ -22,16 +25,20 @@
     levelSelect: document.getElementById("filter-level"),
     priceSelect: document.getElementById("filter-price"),
     searchInput: document.getElementById("course-search"),
-    sortBtn: document.getElementById("sort-toggle")
+    sortSelect: document.getElementById("sort-select"),
+    clearBtn: document.getElementById("clear-filters")
   };
 
   let allCourses = [];
   let state = {
-    language: new URLSearchParams(window.location.search).get("language") || "all",
+    language: (function () {
+      const q = new URLSearchParams(window.location.search);
+      return q.get("language") || q.get("category") || "all";
+    })(),
     level: "all",
     price: "all",
     query: "",
-    sort: "default" // 'default' | 'price-asc' | 'price-desc'
+    sort: "default"
   };
 
   init();
@@ -72,6 +79,9 @@
     }
     if (els.levelSelect) {
       appendOptions(els.levelSelect, levels);
+    }
+    if (els.sortSelect) {
+      els.sortSelect.value = state.sort;
     }
   }
 
@@ -118,26 +128,33 @@
         }, 150);
       });
     }
-    if (els.sortBtn) {
-      els.sortBtn.addEventListener("click", () => {
-        state.sort =
-          state.sort === "price-asc"
-            ? "price-desc"
-            : state.sort === "price-desc"
-              ? "default"
-              : "price-asc";
-        els.sortBtn.setAttribute("data-sort", state.sort);
-        els.sortBtn.setAttribute(
-          "aria-label",
-          state.sort === "price-asc"
-            ? "Sorted by price: low to high"
-            : state.sort === "price-desc"
-              ? "Sorted by price: high to low"
-              : "Sort by price"
-        );
+    if (els.clearBtn) {
+      els.clearBtn.addEventListener("click", clearFilters);
+    }
+    if (els.sortSelect) {
+      els.sortSelect.addEventListener("change", (e) => {
+        state.sort = e.target.value;
         render();
       });
     }
+  }
+
+  function hasActiveFilters() {
+    return state.language !== "all" || state.level !== "all" || state.price !== "all" || state.query !== "";
+  }
+
+  function clearFilters() {
+    state.language = "all";
+    state.level = "all";
+    state.price = "all";
+    state.query = "";
+    state.sort = "default";
+    if (els.languageSelect) els.languageSelect.value = "all";
+    if (els.levelSelect) els.levelSelect.value = "all";
+    if (els.priceSelect) els.priceSelect.value = "all";
+    if (els.searchInput) els.searchInput.value = "";
+    if (els.sortSelect) els.sortSelect.value = "default";
+    render();
   }
 
   function getFiltered() {
@@ -162,6 +179,10 @@
       results = results.slice().sort((a, b) => a.price - b.price);
     } else if (state.sort === "price-desc") {
       results = results.slice().sort((a, b) => b.price - a.price);
+    } else if (state.sort === "duration-asc") {
+      results = results.slice().sort((a, b) => a.durationHours - b.durationHours);
+    } else if (state.sort === "title-asc") {
+      results = results.slice().sort((a, b) => a.title.localeCompare(b.title));
     }
 
     return results;
@@ -177,6 +198,8 @@
       void els.resultsMeta.offsetWidth;
       els.resultsMeta.classList.add("pulse-update");
     }
+
+    if (els.clearBtn) els.clearBtn.hidden = !hasActiveFilters();
 
     if (!els.list) return;
 
@@ -222,6 +245,14 @@
     const initial = course.category ? course.category.trim().charAt(0) : "?";
     const priceLabel = course.price === 0 ? "Free" : "R " + course.price;
     const levelKey = course.level.toLowerCase();
+    const enrolled = typeof isEnrolled === "function" && isEnrolled(course.id);
+    const inCart = typeof isInCart === "function" && isInCart(course.id);
+    const quickAddHtml =
+      course.price > 0 && !enrolled
+        ? `<button class="quick-add-btn${inCart ? " added" : ""}" data-id="${course.id}" type="button"
+            aria-label="${inCart ? "In cart, view cart" : "Add to cart"}"
+            title="${inCart ? "In cart: view cart" : "Add to cart"}">${CART_SVG}${CHECK_SVG}</button>`
+        : "";
 
     return `
       <li class="course-row">
@@ -253,7 +284,7 @@
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>
           </span>
         </a>
-        <button class="quick-add-btn" data-id="${course.id}" type="button" aria-label="Quick add to cart">+</button>
+          ${quickAddHtml}
       </li>
     `;
   }
